@@ -1,0 +1,1626 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Switch:SW_Push SW14
+U 1 1 5F82B3E6
+P 9650 2050
+F 0 "SW14" H 9650 2335 50  0000 C CNN
+F 1 "ESC" H 9650 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 9650 2250 50  0001 C CNN
+F 3 "~" H 9650 2250 50  0001 C CNN
+	1    9650 2050
+	0    -1   1    0   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x16 J1
+U 1 1 5F82BC5D
+P 800 1700
+F 0 "J1" H 718 2617 50  0000 C CNN
+F 1 "Conn_01x16" H 718 2526 50  0000 C CNN
+F 2 "Connector_FFC-FPC:TE_1-84953-6_1x16-1MP_P1.0mm_Horizontal" H 800 1700 50  0001 C CNN
+F 3 "~" H 800 1700 50  0001 C CNN
+	1    800  1700
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1000 1000 1500 1000
+Text Label 1500 1000 2    50   ~ 0
+R1
+Text Label 1500 1100 2    50   ~ 0
+R2
+Text Label 1500 1200 2    50   ~ 0
+R3
+Text Label 1500 1300 2    50   ~ 0
+R4
+Text Label 1500 1400 2    50   ~ 0
+R5
+Text Label 1500 1500 2    50   ~ 0
+R6
+Text Label 1500 1600 2    50   ~ 0
+R7
+Text Label 1500 1700 2    50   ~ 0
+R8
+Text Label 1500 1800 2    50   ~ 0
+C1
+Text Label 1500 1900 2    50   ~ 0
+C2
+Text Label 1500 2000 2    50   ~ 0
+C3
+Text Label 1500 2100 2    50   ~ 0
+C4
+Text Label 1500 2200 2    50   ~ 0
+C5
+Text Label 1500 2300 2    50   ~ 0
+C6
+Text Label 1500 2400 2    50   ~ 0
+C7
+Text Label 1500 2500 2    50   ~ 0
+C8
+Wire Wire Line
+	1500 1100 1000 1100
+Wire Wire Line
+	1500 1200 1000 1200
+Wire Wire Line
+	1500 1300 1000 1300
+Wire Wire Line
+	1500 1400 1000 1400
+Wire Wire Line
+	1500 1500 1000 1500
+Wire Wire Line
+	1500 1600 1000 1600
+Wire Wire Line
+	1500 1700 1000 1700
+Wire Wire Line
+	1500 1800 1000 1800
+Wire Wire Line
+	1500 1900 1000 1900
+Wire Wire Line
+	1500 2000 1000 2000
+Wire Wire Line
+	1500 2100 1000 2100
+Wire Wire Line
+	1500 2200 1000 2200
+Wire Wire Line
+	1500 2300 1000 2300
+Wire Wire Line
+	1500 2400 1000 2400
+Wire Wire Line
+	1500 2500 1000 2500
+Wire Wire Line
+	9650 2250 9800 2250
+Text Label 9800 2250 2    50   ~ 0
+C8
+Wire Wire Line
+	9650 1850 9800 1850
+Text Label 9800 1850 2    50   ~ 0
+R8
+$Comp
+L Switch:SW_Push SW13
+U 1 1 5F9221C6
+P 9150 2050
+F 0 "SW13" H 9150 2335 50  0000 C CNN
+F 1 "1" H 9150 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 9150 2250 50  0001 C CNN
+F 3 "~" H 9150 2250 50  0001 C CNN
+	1    9150 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	9150 2250 9300 2250
+Text Label 9300 2250 2    50   ~ 0
+C1
+Wire Wire Line
+	9150 1850 9300 1850
+Text Label 9300 1850 2    50   ~ 0
+R3
+$Comp
+L Switch:SW_Push SW12
+U 1 1 5F9229D6
+P 8650 2050
+F 0 "SW12" H 8650 2335 50  0000 C CNN
+F 1 "2" H 8650 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 8650 2250 50  0001 C CNN
+F 3 "~" H 8650 2250 50  0001 C CNN
+	1    8650 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	8650 2250 8800 2250
+Text Label 8800 2250 2    50   ~ 0
+C1
+Wire Wire Line
+	8650 1850 8800 1850
+Text Label 8800 1850 2    50   ~ 0
+R4
+$Comp
+L Switch:SW_Push SW11
+U 1 1 5F92334B
+P 8150 2050
+F 0 "SW11" H 8150 2335 50  0000 C CNN
+F 1 "3" H 8150 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 8150 2250 50  0001 C CNN
+F 3 "~" H 8150 2250 50  0001 C CNN
+	1    8150 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	8150 2250 8300 2250
+Text Label 8300 2250 2    50   ~ 0
+C1
+Wire Wire Line
+	8150 1850 8300 1850
+Text Label 8300 1850 2    50   ~ 0
+R5
+$Comp
+L Switch:SW_Push SW10
+U 1 1 5F923AEE
+P 7650 2050
+F 0 "SW10" H 7650 2335 50  0000 C CNN
+F 1 "4" H 7650 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 7650 2250 50  0001 C CNN
+F 3 "~" H 7650 2250 50  0001 C CNN
+	1    7650 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	7650 2250 7800 2250
+Text Label 7800 2250 2    50   ~ 0
+C5
+Wire Wire Line
+	7650 1850 7800 1850
+Text Label 7800 1850 2    50   ~ 0
+R3
+$Comp
+L Switch:SW_Push SW9
+U 1 1 5F9242C1
+P 7150 2050
+F 0 "SW9" H 7150 2335 50  0000 C CNN
+F 1 "5" H 7150 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 7150 2250 50  0001 C CNN
+F 3 "~" H 7150 2250 50  0001 C CNN
+	1    7150 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	7150 2250 7300 2250
+Text Label 7300 2250 2    50   ~ 0
+C1
+Wire Wire Line
+	7150 1850 7300 1850
+Text Label 7300 1850 2    50   ~ 0
+R7
+$Comp
+L Switch:SW_Push SW8
+U 1 1 5F924CA6
+P 6650 2050
+F 0 "SW8" H 6650 2335 50  0000 C CNN
+F 1 "6" H 6650 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 6650 2250 50  0001 C CNN
+F 3 "~" H 6650 2250 50  0001 C CNN
+	1    6650 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	6650 2250 6800 2250
+Text Label 6800 2250 2    50   ~ 0
+C1
+Wire Wire Line
+	6650 1850 6800 1850
+Text Label 6800 1850 2    50   ~ 0
+R8
+$Comp
+L Switch:SW_Push SW7
+U 1 1 5F9256EA
+P 6150 2050
+F 0 "SW7" H 6150 2335 50  0000 C CNN
+F 1 "7" H 6150 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 6150 2250 50  0001 C CNN
+F 3 "~" H 6150 2250 50  0001 C CNN
+	1    6150 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	6150 2250 6300 2250
+Text Label 6300 2250 2    50   ~ 0
+C2
+Wire Wire Line
+	6150 1850 6300 1850
+Text Label 6300 1850 2    50   ~ 0
+R6
+$Comp
+L Switch:SW_Push SW6
+U 1 1 5F9261C3
+P 5650 2050
+F 0 "SW6" H 5650 2335 50  0000 C CNN
+F 1 "8" H 5650 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 5650 2250 50  0001 C CNN
+F 3 "~" H 5650 2250 50  0001 C CNN
+	1    5650 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5650 2250 5800 2250
+Text Label 5800 2250 2    50   ~ 0
+C6
+Wire Wire Line
+	5650 1850 5800 1850
+Text Label 5800 1850 2    50   ~ 0
+R7
+$Comp
+L Switch:SW_Push SW5
+U 1 1 5F926DD6
+P 5150 2050
+F 0 "SW5" H 5150 2335 50  0000 C CNN
+F 1 "9" H 5150 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 5150 2250 50  0001 C CNN
+F 3 "~" H 5150 2250 50  0001 C CNN
+	1    5150 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5150 2250 5300 2250
+Text Label 5300 2250 2    50   ~ 0
+C2
+Wire Wire Line
+	5150 1850 5300 1850
+Text Label 5300 1850 2    50   ~ 0
+R8
+$Comp
+L Switch:SW_Push SW4
+U 1 1 5F927AA2
+P 4650 2050
+F 0 "SW4" H 4650 2335 50  0000 C CNN
+F 1 "0" H 4650 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 4650 2250 50  0001 C CNN
+F 3 "~" H 4650 2250 50  0001 C CNN
+	1    4650 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4650 2250 4800 2250
+Text Label 4800 2250 2    50   ~ 0
+C4
+Wire Wire Line
+	4650 1850 4800 1850
+Text Label 4800 1850 2    50   ~ 0
+R1
+$Comp
+L Switch:SW_Push SW3
+U 1 1 5F928621
+P 4150 2050
+F 0 "SW3" H 4150 2335 50  0000 C CNN
+F 1 "-_" H 4150 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 4150 2250 50  0001 C CNN
+F 3 "~" H 4150 2250 50  0001 C CNN
+	1    4150 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4150 2250 4300 2250
+Text Label 4300 2250 2    50   ~ 0
+C4
+Wire Wire Line
+	4150 1850 4300 1850
+Text Label 4300 1850 2    50   ~ 0
+R3
+$Comp
+L Switch:SW_Push SW2
+U 1 1 5F9295C3
+P 3650 2050
+F 0 "SW2" H 3650 2335 50  0000 C CNN
+F 1 "=+" H 3650 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 3650 2250 50  0001 C CNN
+F 3 "~" H 3650 2250 50  0001 C CNN
+	1    3650 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	3650 2250 3800 2250
+Text Label 3800 2250 2    50   ~ 0
+C7
+Wire Wire Line
+	3650 1850 3800 1850
+Text Label 3800 1850 2    50   ~ 0
+R6
+$Comp
+L Switch:SW_Push SW1
+U 1 1 5F92A44B
+P 3150 2050
+F 0 "SW1" H 3150 2335 50  0000 C CNN
+F 1 "Backspace" H 3150 2244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 3150 2250 50  0001 C CNN
+F 3 "~" H 3150 2250 50  0001 C CNN
+	1    3150 2050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	3150 2250 3300 2250
+Text Label 3300 2250 2    50   ~ 0
+C2
+Wire Wire Line
+	3150 1850 3300 1850
+Text Label 3300 1850 2    50   ~ 0
+R7
+$Comp
+L Switch:SW_Push SW27
+U 1 1 5F954F05
+P 9600 2800
+F 0 "SW27" H 9600 3085 50  0000 C CNN
+F 1 "TAB" H 9600 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 9600 3000 50  0001 C CNN
+F 3 "~" H 9600 3000 50  0001 C CNN
+	1    9600 2800
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	9600 3000 9750 3000
+Text Label 9750 3000 2    50   ~ 0
+C3
+Wire Wire Line
+	9600 2600 9750 2600
+Text Label 9750 2600 2    50   ~ 0
+R1
+$Comp
+L Switch:SW_Push SW26
+U 1 1 5F954F0F
+P 9100 2800
+F 0 "SW26" H 9100 3085 50  0000 C CNN
+F 1 "Q" H 9100 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 9100 3000 50  0001 C CNN
+F 3 "~" H 9100 3000 50  0001 C CNN
+	1    9100 2800
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	9100 3000 9250 3000
+Text Label 9250 3000 2    50   ~ 0
+C2
+Wire Wire Line
+	9100 2600 9250 2600
+Text Label 9250 2600 2    50   ~ 0
+R3
+$Comp
+L Switch:SW_Push SW25
+U 1 1 5F954F19
+P 8600 2800
+F 0 "SW25" H 8600 3085 50  0000 C CNN
+F 1 "W" H 8600 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 8600 3000 50  0001 C CNN
+F 3 "~" H 8600 3000 50  0001 C CNN
+	1    8600 2800
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	8600 3000 8750 3000
+Text Label 8750 3000 2    50   ~ 0
+C3
+Wire Wire Line
+	8600 2600 8750 2600
+Text Label 8750 2600 2    50   ~ 0
+R2
+$Comp
+L Switch:SW_Push SW24
+U 1 1 5F954F23
+P 8100 2800
+F 0 "SW24" H 8100 3085 50  0000 C CNN
+F 1 "E" H 8100 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 8100 3000 50  0001 C CNN
+F 3 "~" H 8100 3000 50  0001 C CNN
+	1    8100 2800
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	8100 3000 8250 3000
+Text Label 8250 3000 2    50   ~ 0
+C3
+Wire Wire Line
+	8100 2600 8250 2600
+Text Label 8250 2600 2    50   ~ 0
+R4
+$Comp
+L Switch:SW_Push SW23
+U 1 1 5F954F2D
+P 7600 2800
+F 0 "SW23" H 7600 3085 50  0000 C CNN
+F 1 "R" H 7600 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 7600 3000 50  0001 C CNN
+F 3 "~" H 7600 3000 50  0001 C CNN
+	1    7600 2800
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	7600 3000 7750 3000
+Text Label 7750 3000 2    50   ~ 0
+C3
+Wire Wire Line
+	7600 2600 7750 2600
+Text Label 7750 2600 2    50   ~ 0
+R5
+Wire Wire Line
+	7100 3000 7250 3000
+Text Label 7250 3000 2    50   ~ 0
+C3
+Wire Wire Line
+	7100 2600 7250 2600
+Text Label 7250 2600 2    50   ~ 0
+R6
+$Comp
+L Switch:SW_Push SW21
+U 1 1 5F954F41
+P 6600 2800
+F 0 "SW21" H 6600 3085 50  0000 C CNN
+F 1 "Y" H 6600 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 6600 3000 50  0001 C CNN
+F 3 "~" H 6600 3000 50  0001 C CNN
+	1    6600 2800
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	6600 3000 6750 3000
+Text Label 6750 3000 2    50   ~ 0
+C3
+Wire Wire Line
+	6600 2600 6750 2600
+Text Label 6750 2600 2    50   ~ 0
+R8
+$Comp
+L Switch:SW_Push SW20
+U 1 1 5F954F4B
+P 6100 2800
+F 0 "SW20" H 6100 3085 50  0000 C CNN
+F 1 "U" H 6100 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 6100 3000 50  0001 C CNN
+F 3 "~" H 6100 3000 50  0001 C CNN
+	1    6100 2800
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	6100 3000 6250 3000
+Text Label 6250 3000 2    50   ~ 0
+C2
+Wire Wire Line
+	6100 2600 6250 2600
+Text Label 6250 2600 2    50   ~ 0
+R4
+$Comp
+L Switch:SW_Push SW19
+U 1 1 5F954F55
+P 5600 2800
+F 0 "SW19" H 5600 3085 50  0000 C CNN
+F 1 "I" H 5600 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 5600 3000 50  0001 C CNN
+F 3 "~" H 5600 3000 50  0001 C CNN
+	1    5600 2800
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5600 3000 5750 3000
+Text Label 5750 3000 2    50   ~ 0
+C4
+Wire Wire Line
+	5600 2600 5750 2600
+Text Label 5750 2600 2    50   ~ 0
+R2
+$Comp
+L Switch:SW_Push SW18
+U 1 1 5F954F5F
+P 5100 2800
+F 0 "SW18" H 5100 3085 50  0000 C CNN
+F 1 "O" H 5100 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 5100 3000 50  0001 C CNN
+F 3 "~" H 5100 3000 50  0001 C CNN
+	1    5100 2800
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5100 3000 5250 3000
+Text Label 5250 3000 2    50   ~ 0
+C2
+Wire Wire Line
+	5100 2600 5250 2600
+Text Label 5250 2600 2    50   ~ 0
+R5
+$Comp
+L Switch:SW_Push SW17
+U 1 1 5F954F69
+P 4600 2800
+F 0 "SW17" H 4600 3085 50  0000 C CNN
+F 1 "P" H 4600 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 4600 3000 50  0001 C CNN
+F 3 "~" H 4600 3000 50  0001 C CNN
+	1    4600 2800
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4600 3000 4750 3000
+Text Label 4750 3000 2    50   ~ 0
+C5
+Wire Wire Line
+	4600 2600 4750 2600
+Text Label 4750 2600 2    50   ~ 0
+R2
+$Comp
+L Switch:SW_Push SW16
+U 1 1 5F954F73
+P 4100 2800
+F 0 "SW16" H 4100 3085 50  0000 C CNN
+F 1 "[" H 4100 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 4100 3000 50  0001 C CNN
+F 3 "~" H 4100 3000 50  0001 C CNN
+	1    4100 2800
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4100 3000 4250 3000
+Text Label 4250 3000 2    50   ~ 0
+C4
+Wire Wire Line
+	4100 2600 4250 2600
+Text Label 4250 2600 2    50   ~ 0
+R5
+$Comp
+L Switch:SW_Push SW15
+U 1 1 5F954F7D
+P 3600 2800
+F 0 "SW15" H 3600 3085 50  0000 C CNN
+F 1 "]" H 3600 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 3600 3000 50  0001 C CNN
+F 3 "~" H 3600 3000 50  0001 C CNN
+	1    3600 2800
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	3600 3000 3750 3000
+Text Label 3750 3000 2    50   ~ 0
+C4
+Wire Wire Line
+	3600 2600 3750 2600
+Text Label 3750 2600 2    50   ~ 0
+R8
+$Comp
+L Switch:SW_Push SW28
+U 1 1 5F954F87
+P 3100 3200
+F 0 "SW28" H 3100 3485 50  0000 C CNN
+F 1 "ENTER" H 3100 3394 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 3100 3400 50  0001 C CNN
+F 3 "~" H 3100 3400 50  0001 C CNN
+	1    3100 3200
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	3100 3400 3250 3400
+Text Label 3250 3400 2    50   ~ 0
+C3
+Wire Wire Line
+	3100 3000 3250 3000
+Text Label 3250 3000 2    50   ~ 0
+R7
+$Comp
+L Switch:SW_Push SW29
+U 1 1 5F968101
+P 9700 3500
+F 0 "SW29" H 9700 3785 50  0000 C CNN
+F 1 "CAPS" H 9700 3694 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 9700 3700 50  0001 C CNN
+F 3 "~" H 9700 3700 50  0001 C CNN
+	1    9700 3500
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	9700 3700 9850 3700
+Text Label 9850 3700 2    50   ~ 0
+C6
+Wire Wire Line
+	9700 3300 9850 3300
+Text Label 9850 3300 2    50   ~ 0
+R6
+$Comp
+L Switch:SW_Push SW40
+U 1 1 5F96810B
+P 8900 3550
+F 0 "SW40" H 8900 3835 50  0000 C CNN
+F 1 "A" H 8900 3744 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 8900 3750 50  0001 C CNN
+F 3 "~" H 8900 3750 50  0001 C CNN
+	1    8900 3550
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	8900 3750 9050 3750
+Text Label 9050 3750 2    50   ~ 0
+C8
+Wire Wire Line
+	8900 3350 9050 3350
+$Comp
+L Switch:SW_Push SW39
+U 1 1 5F968115
+P 8400 3550
+F 0 "SW39" H 8400 3835 50  0000 C CNN
+F 1 "S" H 8400 3744 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 8400 3750 50  0001 C CNN
+F 3 "~" H 8400 3750 50  0001 C CNN
+	1    8400 3550
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	8400 3750 8550 3750
+Text Label 8550 3750 2    50   ~ 0
+C5
+Wire Wire Line
+	8400 3350 8550 3350
+Text Label 8550 3350 2    50   ~ 0
+R1
+$Comp
+L Switch:SW_Push SW38
+U 1 1 5F96811F
+P 7900 3550
+F 0 "SW38" H 7900 3835 50  0000 C CNN
+F 1 "D" H 7900 3744 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 7900 3750 50  0001 C CNN
+F 3 "~" H 7900 3750 50  0001 C CNN
+	1    7900 3550
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	7900 3750 8050 3750
+Text Label 8050 3750 2    50   ~ 0
+C1
+Wire Wire Line
+	7900 3350 8050 3350
+Text Label 8050 3350 2    50   ~ 0
+R6
+$Comp
+L Switch:SW_Push SW37
+U 1 1 5F968129
+P 7400 3550
+F 0 "SW37" H 7400 3835 50  0000 C CNN
+F 1 "F" H 7400 3744 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 7400 3750 50  0001 C CNN
+F 3 "~" H 7400 3750 50  0001 C CNN
+	1    7400 3550
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	7400 3750 7550 3750
+Text Label 7550 3750 2    50   ~ 0
+C6
+Wire Wire Line
+	7400 3350 7550 3350
+Text Label 7550 3350 2    50   ~ 0
+R1
+$Comp
+L Switch:SW_Push SW36
+U 1 1 5F968133
+P 6900 3550
+F 0 "SW36" H 6900 3835 50  0000 C CNN
+F 1 "G" H 6900 3744 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 6900 3750 50  0001 C CNN
+F 3 "~" H 6900 3750 50  0001 C CNN
+	1    6900 3550
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	6900 3750 7050 3750
+Text Label 7050 3750 2    50   ~ 0
+C5
+Wire Wire Line
+	6900 3350 7050 3350
+Text Label 7050 3350 2    50   ~ 0
+R4
+$Comp
+L Switch:SW_Push SW35
+U 1 1 5F96813D
+P 6400 3550
+F 0 "SW35" H 6400 3835 50  0000 C CNN
+F 1 "H" H 6400 3744 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 6400 3750 50  0001 C CNN
+F 3 "~" H 6400 3750 50  0001 C CNN
+	1    6400 3550
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	6400 3750 6550 3750
+Text Label 6550 3750 2    50   ~ 0
+C6
+Wire Wire Line
+	6400 3350 6550 3350
+Text Label 6550 3350 2    50   ~ 0
+R2
+$Comp
+L Switch:SW_Push SW34
+U 1 1 5F968147
+P 5900 3550
+F 0 "SW34" H 5900 3835 50  0000 C CNN
+F 1 "J" H 5900 3744 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 5900 3750 50  0001 C CNN
+F 3 "~" H 5900 3750 50  0001 C CNN
+	1    5900 3550
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5900 3750 6050 3750
+Text Label 6050 3750 2    50   ~ 0
+C6
+Wire Wire Line
+	5900 3350 6050 3350
+Text Label 6050 3350 2    50   ~ 0
+R3
+$Comp
+L Switch:SW_Push SW33
+U 1 1 5F968151
+P 5400 3550
+F 0 "SW33" H 5400 3835 50  0000 C CNN
+F 1 "K" H 5400 3744 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 5400 3750 50  0001 C CNN
+F 3 "~" H 5400 3750 50  0001 C CNN
+	1    5400 3550
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5400 3750 5550 3750
+Text Label 5550 3750 2    50   ~ 0
+C6
+Wire Wire Line
+	5400 3350 5550 3350
+Text Label 5550 3350 2    50   ~ 0
+R8
+$Comp
+L Switch:SW_Push SW32
+U 1 1 5F96815B
+P 4900 3550
+F 0 "SW32" H 4900 3835 50  0000 C CNN
+F 1 "L" H 4900 3744 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 4900 3750 50  0001 C CNN
+F 3 "~" H 4900 3750 50  0001 C CNN
+	1    4900 3550
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4900 3750 5050 3750
+Text Label 5050 3750 2    50   ~ 0
+C5
+Wire Wire Line
+	4900 3350 5050 3350
+Text Label 5050 3350 2    50   ~ 0
+R8
+$Comp
+L Switch:SW_Push SW31
+U 1 1 5F968165
+P 4400 3550
+F 0 "SW31" H 4400 3835 50  0000 C CNN
+F 1 ";:" H 4400 3744 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 4400 3750 50  0001 C CNN
+F 3 "~" H 4400 3750 50  0001 C CNN
+	1    4400 3550
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4400 3750 4550 3750
+Text Label 4550 3750 2    50   ~ 0
+C7
+Wire Wire Line
+	4400 3350 4550 3350
+Text Label 4550 3350 2    50   ~ 0
+R4
+$Comp
+L Switch:SW_Push SW30
+U 1 1 5F96816F
+P 3900 3550
+F 0 "SW30" H 3900 3835 50  0000 C CNN
+F 1 "' \"" H 3900 3744 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 3900 3750 50  0001 C CNN
+F 3 "~" H 3900 3750 50  0001 C CNN
+	1    3900 3550
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	3900 3750 4050 3750
+Text Label 4050 3750 2    50   ~ 0
+C4
+Wire Wire Line
+	3900 3350 4050 3350
+Text Label 4050 3350 2    50   ~ 0
+R7
+$Comp
+L Switch:SW_Push SW54
+U 1 1 5F977755
+P 9700 4250
+F 0 "SW54" H 9700 4535 50  0000 C CNN
+F 1 "LSH" H 9700 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 9700 4450 50  0001 C CNN
+F 3 "~" H 9700 4450 50  0001 C CNN
+	1    9700 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	9700 4450 9850 4450
+Text Label 9850 4450 2    50   ~ 0
+C4
+Wire Wire Line
+	9700 4050 9850 4050
+Text Label 9850 4050 2    50   ~ 0
+R4
+$Comp
+L Switch:SW_Push SW53
+U 1 1 5F97775F
+P 9200 4250
+F 0 "SW53" H 9200 4535 50  0000 C CNN
+F 1 "\\|" H 9200 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 9200 4450 50  0001 C CNN
+F 3 "~" H 9200 4450 50  0001 C CNN
+	1    9200 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	9200 4450 9350 4450
+Text Label 9350 4450 2    50   ~ 0
+C7
+Wire Wire Line
+	9200 4050 9350 4050
+Text Label 9350 4050 2    50   ~ 0
+R1
+$Comp
+L Switch:SW_Push SW52
+U 1 1 5F977769
+P 8700 4250
+F 0 "SW52" H 8700 4535 50  0000 C CNN
+F 1 "Z" H 8700 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 8700 4450 50  0001 C CNN
+F 3 "~" H 8700 4450 50  0001 C CNN
+	1    8700 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	8700 4450 8850 4450
+Text Label 8850 4450 2    50   ~ 0
+C7
+Wire Wire Line
+	8700 4050 8850 4050
+Text Label 8850 4050 2    50   ~ 0
+R2
+$Comp
+L Switch:SW_Push SW51
+U 1 1 5F977773
+P 8200 4250
+F 0 "SW51" H 8200 4535 50  0000 C CNN
+F 1 "X" H 8200 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 8200 4450 50  0001 C CNN
+F 3 "~" H 8200 4450 50  0001 C CNN
+	1    8200 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	8200 4450 8350 4450
+Text Label 8350 4450 2    50   ~ 0
+C7
+Wire Wire Line
+	8200 4050 8350 4050
+Text Label 8350 4050 2    50   ~ 0
+R8
+$Comp
+L Switch:SW_Push SW50
+U 1 1 5F97777D
+P 7700 4250
+F 0 "SW50" H 7700 4535 50  0000 C CNN
+F 1 "C" H 7700 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 7700 4450 50  0001 C CNN
+F 3 "~" H 7700 4450 50  0001 C CNN
+	1    7700 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	7700 4450 7850 4450
+Text Label 7850 4450 2    50   ~ 0
+C8
+Wire Wire Line
+	7700 4050 7850 4050
+Text Label 7850 4050 2    50   ~ 0
+R1
+$Comp
+L Switch:SW_Push SW49
+U 1 1 5F977787
+P 7200 4250
+F 0 "SW49" H 7200 4535 50  0000 C CNN
+F 1 "V" H 7200 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 7200 4450 50  0001 C CNN
+F 3 "~" H 7200 4450 50  0001 C CNN
+	1    7200 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	7200 4450 7350 4450
+Text Label 7350 4450 2    50   ~ 0
+C8
+Wire Wire Line
+	7200 4050 7350 4050
+Text Label 7350 4050 2    50   ~ 0
+R2
+$Comp
+L Switch:SW_Push SW48
+U 1 1 5F977791
+P 6700 4250
+F 0 "SW48" H 6700 4535 50  0000 C CNN
+F 1 "B" H 6700 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 6700 4450 50  0001 C CNN
+F 3 "~" H 6700 4450 50  0001 C CNN
+	1    6700 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	6700 4450 6850 4450
+Text Label 6850 4450 2    50   ~ 0
+C8
+Wire Wire Line
+	6700 4050 6850 4050
+Text Label 6850 4050 2    50   ~ 0
+R3
+$Comp
+L Switch:SW_Push SW47
+U 1 1 5F97779B
+P 6200 4250
+F 0 "SW47" H 6200 4535 50  0000 C CNN
+F 1 "N" H 6200 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 6200 4450 50  0001 C CNN
+F 3 "~" H 6200 4450 50  0001 C CNN
+	1    6200 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	6200 4450 6350 4450
+Text Label 6350 4450 2    50   ~ 0
+C8
+Wire Wire Line
+	6200 4050 6350 4050
+Text Label 6350 4050 2    50   ~ 0
+R4
+$Comp
+L Switch:SW_Push SW46
+U 1 1 5F9777A5
+P 5700 4250
+F 0 "SW46" H 5700 4535 50  0000 C CNN
+F 1 "M" H 5700 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 5700 4450 50  0001 C CNN
+F 3 "~" H 5700 4450 50  0001 C CNN
+	1    5700 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5700 4450 5850 4450
+Text Label 5850 4450 2    50   ~ 0
+C8
+Wire Wire Line
+	5700 4050 5850 4050
+Text Label 5850 4050 2    50   ~ 0
+R5
+$Comp
+L Switch:SW_Push SW45
+U 1 1 5F9777AF
+P 5200 4250
+F 0 "SW45" H 5200 4535 50  0000 C CNN
+F 1 ",<" H 5200 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 5200 4450 50  0001 C CNN
+F 3 "~" H 5200 4450 50  0001 C CNN
+	1    5200 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5200 4450 5350 4450
+Text Label 5350 4450 2    50   ~ 0
+C5
+Wire Wire Line
+	5200 4050 5350 4050
+Text Label 5350 4050 2    50   ~ 0
+R7
+$Comp
+L Switch:SW_Push SW44
+U 1 1 5F9777B9
+P 4700 4250
+F 0 "SW44" H 4700 4535 50  0000 C CNN
+F 1 ".>" H 4700 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 4700 4450 50  0001 C CNN
+F 3 "~" H 4700 4450 50  0001 C CNN
+	1    4700 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4700 4450 4850 4450
+Text Label 4850 4450 2    50   ~ 0
+C7
+Wire Wire Line
+	4700 4050 4850 4050
+Text Label 4850 4050 2    50   ~ 0
+R5
+$Comp
+L Switch:SW_Push SW43
+U 1 1 5F9777C3
+P 4200 4250
+F 0 "SW43" H 4200 4535 50  0000 C CNN
+F 1 "/?" H 4200 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 4200 4450 50  0001 C CNN
+F 3 "~" H 4200 4450 50  0001 C CNN
+	1    4200 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4200 4450 4350 4450
+Text Label 4350 4450 2    50   ~ 0
+C8
+Wire Wire Line
+	4200 4050 4350 4050
+Text Label 4350 4050 2    50   ~ 0
+R6
+$Comp
+L Switch:SW_Push SW42
+U 1 1 5F9777CD
+P 3700 4250
+F 0 "SW42" H 3700 4535 50  0000 C CNN
+F 1 "INS DEL" H 3700 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 3700 4450 50  0001 C CNN
+F 3 "~" H 3700 4450 50  0001 C CNN
+	1    3700 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	3700 4450 3850 4450
+Text Label 3850 4450 2    50   ~ 0
+C2
+Wire Wire Line
+	3700 4050 3850 4050
+Text Label 3850 4050 2    50   ~ 0
+R1
+$Comp
+L Switch:SW_Push SW41
+U 1 1 5F9777D7
+P 3200 4250
+F 0 "SW41" H 3200 4535 50  0000 C CNN
+F 1 "RSH" H 3200 4444 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 3200 4450 50  0001 C CNN
+F 3 "~" H 3200 4450 50  0001 C CNN
+	1    3200 4250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	3200 4450 3350 4450
+Text Label 3350 4450 2    50   ~ 0
+C5
+Wire Wire Line
+	3200 4050 3350 4050
+Text Label 3350 4050 2    50   ~ 0
+R5
+$Comp
+L Switch:SW_Push SW64
+U 1 1 5F9A6DCF
+P 9700 5050
+F 0 "SW64" H 9700 5335 50  0000 C CNN
+F 1 "FN" H 9700 5244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 9700 5250 50  0001 C CNN
+F 3 "~" H 9700 5250 50  0001 C CNN
+	1    9700 5050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	9700 5250 9850 5250
+Text Label 9850 5250 2    50   ~ 0
+C1
+Wire Wire Line
+	9700 4850 9850 4850
+Text Label 9850 4850 2    50   ~ 0
+R1
+$Comp
+L Switch:SW_Push SW63
+U 1 1 5F9A6DD9
+P 9200 5050
+F 0 "SW63" H 9200 5335 50  0000 C CNN
+F 1 "ATARI" H 9200 5244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 9200 5250 50  0001 C CNN
+F 3 "~" H 9200 5250 50  0001 C CNN
+	1    9200 5050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	9200 5250 9350 5250
+Text Label 9350 5250 2    50   ~ 0
+C7
+Wire Wire Line
+	9200 4850 9350 4850
+Text Label 9350 4850 2    50   ~ 0
+R7
+$Comp
+L Switch:SW_Push SW62
+U 1 1 5F9A6DE3
+P 8700 5050
+F 0 "SW62" H 8700 5335 50  0000 C CNN
+F 1 "CTRL" H 8700 5244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 8700 5250 50  0001 C CNN
+F 3 "~" H 8700 5250 50  0001 C CNN
+	1    8700 5050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	8700 5250 8850 5250
+Text Label 8850 5250 2    50   ~ 0
+C3
+Wire Wire Line
+	8700 4850 8850 4850
+Text Label 8850 4850 2    50   ~ 0
+R3
+$Comp
+L Switch:SW_Push SW61
+U 1 1 5F9A6DED
+P 8200 5050
+F 0 "SW61" H 8200 5335 50  0000 C CNN
+F 1 "ALT" H 8200 5244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 8200 5250 50  0001 C CNN
+F 3 "~" H 8200 5250 50  0001 C CNN
+	1    8200 5050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	8200 5250 8350 5250
+Text Label 8350 5250 2    50   ~ 0
+C2
+Wire Wire Line
+	8200 4850 8350 4850
+Text Label 8350 4850 2    50   ~ 0
+R2
+$Comp
+L Switch:SW_Push SW60
+U 1 1 5F9A6DF7
+P 7550 5050
+F 0 "SW60" H 7550 5335 50  0000 C CNN
+F 1 "SPACE" H 7550 5244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 7550 5250 50  0001 C CNN
+F 3 "~" H 7550 5250 50  0001 C CNN
+	1    7550 5050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	7550 5250 7700 5250
+Text Label 7700 5250 2    50   ~ 0
+C7
+Wire Wire Line
+	7550 4850 7700 4850
+Text Label 7700 4850 2    50   ~ 0
+R3
+$Comp
+L Switch:SW_Push SW59
+U 1 1 5F9A6E01
+P 5250 5050
+F 0 "SW59" H 5250 5335 50  0000 C CNN
+F 1 "SPACE" H 5250 5244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 5250 5250 50  0001 C CNN
+F 3 "~" H 5250 5250 50  0001 C CNN
+	1    5250 5050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5250 5250 5400 5250
+Text Label 5400 5250 2    50   ~ 0
+C7
+Wire Wire Line
+	5250 4850 5400 4850
+Text Label 5400 4850 2    50   ~ 0
+R3
+$Comp
+L Switch:SW_Push SW58
+U 1 1 5F9A6E0B
+P 4650 5050
+F 0 "SW58" H 4650 5335 50  0000 C CNN
+F 1 "LEFT" H 4650 5244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 4650 5250 50  0001 C CNN
+F 3 "~" H 4650 5250 50  0001 C CNN
+	1    4650 5050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4650 5250 4800 5250
+Text Label 4800 5250 2    50   ~ 0
+C6
+Wire Wire Line
+	4650 4850 4800 4850
+Text Label 4800 4850 2    50   ~ 0
+R4
+$Comp
+L Switch:SW_Push SW57
+U 1 1 5F9A6E15
+P 4150 5050
+F 0 "SW57" H 4150 5335 50  0000 C CNN
+F 1 "UP" H 4150 5244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 4150 5250 50  0001 C CNN
+F 3 "~" H 4150 5250 50  0001 C CNN
+	1    4150 5050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4150 5250 4300 5250
+Text Label 4300 5250 2    50   ~ 0
+C4
+Wire Wire Line
+	4150 4850 4300 4850
+Text Label 4300 4850 2    50   ~ 0
+R6
+$Comp
+L Switch:SW_Push SW56
+U 1 1 5F9A6E1F
+P 3650 5050
+F 0 "SW56" H 3650 5335 50  0000 C CNN
+F 1 "DOWN" H 3650 5244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 3650 5250 50  0001 C CNN
+F 3 "~" H 3650 5250 50  0001 C CNN
+	1    3650 5050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	3650 5250 3800 5250
+Text Label 3800 5250 2    50   ~ 0
+C5
+Wire Wire Line
+	3650 4850 3800 4850
+Text Label 3800 4850 2    50   ~ 0
+R6
+$Comp
+L Switch:SW_Push SW55
+U 1 1 5F9A6E29
+P 3150 5050
+F 0 "SW55" H 3150 5335 50  0000 C CNN
+F 1 "RIGHT" H 3150 5244 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 3150 5250 50  0001 C CNN
+F 3 "~" H 3150 5250 50  0001 C CNN
+	1    3150 5050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	3150 5250 3300 5250
+Text Label 3300 5250 2    50   ~ 0
+C6
+Wire Wire Line
+	3150 4850 3300 4850
+Text Label 3300 4850 2    50   ~ 0
+R5
+$Comp
+L Switch:SW_Push SW22
+U 1 1 5F954F37
+P 7100 2800
+F 0 "SW22" H 7100 3085 50  0000 C CNN
+F 1 "T" H 7100 2994 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Key_landing" H 7100 3000 50  0001 C CNN
+F 3 "~" H 7100 3000 50  0001 C CNN
+	1    7100 2800
+	0    -1   1    0   
+$EndComp
+Text Label 9050 3350 2    50   ~ 0
+R7
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 5F9F6D1C
+P 9000 1600
+F 0 "H2" H 9100 1646 50  0000 L CNN
+F 1 "4mm" H 9100 1555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm" H 9000 1600 50  0001 C CNN
+F 3 "~" H 9000 1600 50  0001 C CNN
+	1    9000 1600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 5FA27CB1
+P 4800 1600
+F 0 "H1" H 4900 1646 50  0000 L CNN
+F 1 "4mm" H 4900 1555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm" H 4800 1600 50  0001 C CNN
+F 3 "~" H 4800 1600 50  0001 C CNN
+	1    4800 1600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 5FA28157
+P 2800 2350
+F 0 "H3" H 2900 2396 50  0000 L CNN
+F 1 "4mm" H 2900 2305 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm" H 2800 2350 50  0001 C CNN
+F 3 "~" H 2800 2350 50  0001 C CNN
+	1    2800 2350
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H10
+U 1 1 5FA28CCB
+P 3450 5450
+F 0 "H10" H 3550 5496 50  0000 L CNN
+F 1 "4mm" H 3550 5405 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm" H 3450 5450 50  0001 C CNN
+F 3 "~" H 3450 5450 50  0001 C CNN
+	1    3450 5450
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H4
+U 1 1 5FA297C2
+P 6300 2400
+F 0 "H4" H 6400 2446 50  0000 L CNN
+F 1 "4mm" H 6400 2355 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm" H 6300 2400 50  0001 C CNN
+F 3 "~" H 6300 2400 50  0001 C CNN
+	1    6300 2400
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H5
+U 1 1 5FA2A8FD
+P 8350 2400
+F 0 "H5" H 8450 2446 50  0000 L CNN
+F 1 "4mm" H 8450 2355 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm" H 8350 2400 50  0001 C CNN
+F 3 "~" H 8350 2400 50  0001 C CNN
+	1    8350 2400
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H6
+U 1 1 5FA2B21B
+P 7400 3150
+F 0 "H6" H 7500 3196 50  0000 L CNN
+F 1 "4mm" H 7500 3105 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm" H 7400 3150 50  0001 C CNN
+F 3 "~" H 7400 3150 50  0001 C CNN
+	1    7400 3150
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H7
+U 1 1 5FA2B54B
+P 6400 4600
+F 0 "H7" H 6500 4646 50  0000 L CNN
+F 1 "4mm" H 6500 4555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm" H 6400 4600 50  0001 C CNN
+F 3 "~" H 6400 4600 50  0001 C CNN
+	1    6400 4600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H8
+U 1 1 5FA2C08E
+P 7500 4600
+F 0 "H8" H 7600 4646 50  0000 L CNN
+F 1 "4mm" H 7600 4555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm" H 7500 4600 50  0001 C CNN
+F 3 "~" H 7500 4600 50  0001 C CNN
+	1    7500 4600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H9
+U 1 1 5FA2C6FE
+P 9500 4600
+F 0 "H9" H 9600 4646 50  0000 L CNN
+F 1 "4mm" H 9600 4555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm" H 9500 4600 50  0001 C CNN
+F 3 "~" H 9500 4600 50  0001 C CNN
+	1    9500 4600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H11
+U 1 1 5FA2CE12
+P 7900 5450
+F 0 "H11" H 8000 5496 50  0000 L CNN
+F 1 "4mm" H 8000 5405 50  0000 L CNN
+F 2 "MountingHole:MountingHole_4mm" H 7900 5450 50  0001 C CNN
+F 3 "~" H 7900 5450 50  0001 C CNN
+	1    7900 5450
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M6
+U 1 1 5FA2DEA6
+P 2800 1650
+F 0 "M6" H 2900 1696 50  0000 L CNN
+F 1 "2,5mm" H 2900 1605 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 2800 1650 50  0001 C CNN
+F 3 "~" H 2800 1650 50  0001 C CNN
+	1    2800 1650
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M10
+U 1 1 5FA2F614
+P 2800 3600
+F 0 "M10" H 2900 3646 50  0000 L CNN
+F 1 "2,5mm" H 2900 3555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 2800 3600 50  0001 C CNN
+F 3 "~" H 2800 3600 50  0001 C CNN
+	1    2800 3600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M13
+U 1 1 5FA2FF97
+P 2900 5450
+F 0 "M13" H 3000 5496 50  0000 L CNN
+F 1 "2,5mm" H 3000 5405 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 2900 5450 50  0001 C CNN
+F 3 "~" H 2900 5450 50  0001 C CNN
+	1    2900 5450
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M16
+U 1 1 5FA30588
+P 4450 5500
+F 0 "M16" H 4550 5546 50  0000 L CNN
+F 1 "2,5mm" H 4550 5455 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 4450 5500 50  0001 C CNN
+F 3 "~" H 4450 5500 50  0001 C CNN
+	1    4450 5500
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M17
+U 1 1 5FA30D1C
+P 5350 5500
+F 0 "M17" H 5450 5546 50  0000 L CNN
+F 1 "2,5mm" H 5450 5455 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 5350 5500 50  0001 C CNN
+F 3 "~" H 5350 5500 50  0001 C CNN
+	1    5350 5500
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M18
+U 1 1 5FA31475
+P 7150 5500
+F 0 "M18" H 7250 5546 50  0000 L CNN
+F 1 "2,5mm" H 7250 5455 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 7150 5500 50  0001 C CNN
+F 3 "~" H 7150 5500 50  0001 C CNN
+	1    7150 5500
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M14
+U 1 1 5FA31DE2
+P 8400 5450
+F 0 "M14" H 8500 5496 50  0000 L CNN
+F 1 "2,5mm" H 8500 5405 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 8400 5450 50  0001 C CNN
+F 3 "~" H 8400 5450 50  0001 C CNN
+	1    8400 5450
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M15
+U 1 1 5FA321C1
+P 10000 5450
+F 0 "M15" H 10100 5496 50  0000 L CNN
+F 1 "2,5mm" H 10100 5405 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 10000 5450 50  0001 C CNN
+F 3 "~" H 10000 5450 50  0001 C CNN
+	1    10000 5450
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M12
+U 1 1 5FA326C6
+P 10000 3850
+F 0 "M12" H 10100 3896 50  0000 L CNN
+F 1 "2,5mm" H 10100 3805 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 10000 3850 50  0001 C CNN
+F 3 "~" H 10000 3850 50  0001 C CNN
+	1    10000 3850
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M5
+U 1 1 5FA33362
+P 9950 1600
+F 0 "M5" H 10050 1646 50  0000 L CNN
+F 1 "2,5mm" H 10050 1555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 9950 1600 50  0001 C CNN
+F 3 "~" H 9950 1600 50  0001 C CNN
+	1    9950 1600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M4
+U 1 1 5FA3365C
+P 8350 1600
+F 0 "M4" H 8450 1646 50  0000 L CNN
+F 1 "2,5mm" H 8450 1555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 8350 1600 50  0001 C CNN
+F 3 "~" H 8350 1600 50  0001 C CNN
+	1    8350 1600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M3
+U 1 1 5FA33D62
+P 6800 1600
+F 0 "M3" H 6900 1646 50  0000 L CNN
+F 1 "2,5mm" H 6900 1555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 6800 1600 50  0001 C CNN
+F 3 "~" H 6800 1600 50  0001 C CNN
+	1    6800 1600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M2
+U 1 1 5FA3425B
+P 5750 1600
+F 0 "M2" H 5850 1646 50  0000 L CNN
+F 1 "2,5mm" H 5850 1555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 5750 1600 50  0001 C CNN
+F 3 "~" H 5750 1600 50  0001 C CNN
+	1    5750 1600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M1
+U 1 1 5FA349EF
+P 3900 1600
+F 0 "M1" H 4000 1646 50  0000 L CNN
+F 1 "2,5mm" H 4000 1555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 3900 1600 50  0001 C CNN
+F 3 "~" H 3900 1600 50  0001 C CNN
+	1    3900 1600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M7
+U 1 1 5FA34F47
+P 3900 3150
+F 0 "M7" H 4000 3196 50  0000 L CNN
+F 1 "2,5mm" H 4000 3105 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 3900 3150 50  0001 C CNN
+F 3 "~" H 3900 3150 50  0001 C CNN
+	1    3900 3150
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M8
+U 1 1 5FA359AC
+P 5400 3150
+F 0 "M8" H 5500 3196 50  0000 L CNN
+F 1 "2,5mm" H 5500 3105 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 5400 3150 50  0001 C CNN
+F 3 "~" H 5400 3150 50  0001 C CNN
+	1    5400 3150
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M9
+U 1 1 5FA61DA5
+P 8300 3150
+F 0 "M9" H 8400 3196 50  0000 L CNN
+F 1 "2,5mm" H 8400 3105 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 8300 3150 50  0001 C CNN
+F 3 "~" H 8300 3150 50  0001 C CNN
+	1    8300 3150
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole M11
+U 1 1 5FA622E4
+P 7050 3850
+F 0 "M11" H 7150 3896 50  0000 L CNN
+F 1 "2,5mm" H 7150 3805 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 7050 3850 50  0001 C CNN
+F 3 "~" H 7050 3850 50  0001 C CNN
+	1    7050 3850
+	-1   0    0    -1  
+$EndComp
+$EndSCHEMATC
