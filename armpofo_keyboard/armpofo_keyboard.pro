@@ -1,4 +1,4 @@
-update=Sun 11 Oct 2020 13:42:15 CEST
+update=Mon 19 Oct 2020 14:14:21 CEST
 version=1
 last_client=kicad
 [general]
@@ -27,7 +27,7 @@ version=1
 PageLayoutDescrFile=
 LastNetListRead=armpofo_keyboard.net
 CopperLayerCount=2
-BoardThickness=1.6
+BoardThickness=1
 AllowMicroVias=0
 AllowBlindVias=0
 RequireCourtyardDefinitions=0
@@ -67,7 +67,7 @@ OthersTextUpright=1
 SolderMaskClearance=0
 SolderMaskMinWidth=0
 SolderPasteClearance=0
-SolderPasteRatio=0
+SolderPasteRatio=-0
 [pcbnew/Layer.F.Cu]
 Name=F.Cu
 Type=0
@@ -233,7 +233,7 @@ Enabled=1
 [pcbnew/Layer.F.Fab]
 Enabled=1
 [pcbnew/Layer.Rescue]
-Enabled=1
+Enabled=0
 [pcbnew/Netclasses]
 [pcbnew/Netclasses/Default]
 Name=Default
