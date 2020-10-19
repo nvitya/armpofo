@@ -1305,28 +1305,6 @@ $EndComp
 Text Label 9050 3350 2    50   ~ 0
 R7
 $Comp
-L Mechanical:MountingHole H2
-U 1 1 5F9F6D1C
-P 9000 1600
-F 0 "H2" H 9100 1646 50  0000 L CNN
-F 1 "4mm" H 9100 1555 50  0000 L CNN
-F 2 "MountingHole:MountingHole_4mm" H 9000 1600 50  0001 C CNN
-F 3 "~" H 9000 1600 50  0001 C CNN
-	1    9000 1600
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H1
-U 1 1 5FA27CB1
-P 4800 1600
-F 0 "H1" H 4900 1646 50  0000 L CNN
-F 1 "4mm" H 4900 1555 50  0000 L CNN
-F 2 "MountingHole:MountingHole_4mm" H 4800 1600 50  0001 C CNN
-F 3 "~" H 4800 1600 50  0001 C CNN
-	1    4800 1600
-	-1   0    0    -1  
-$EndComp
-$Comp
 L Mechanical:MountingHole H3
 U 1 1 5FA28157
 P 2800 2350

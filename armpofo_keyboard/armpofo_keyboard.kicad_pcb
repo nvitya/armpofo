@@ -2,10 +2,10 @@
 
   (general
     (thickness 1.6)
-    (drawings 4)
+    (drawings 12)
     (tracks 0)
     (zones 0)
-    (modules 94)
+    (modules 92)
     (nets 17)
   )
 
@@ -1861,46 +1861,6 @@
       (net 1 /R1) (zone_connect 0))
   )
 
-  (module MountingHole:MountingHole_4mm (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D7B9B)
-    (at 44.2 -106.6)
-    (descr "Mounting Hole 4mm, no annular")
-    (tags "mounting hole 4mm no annular")
-    (path /5FA27CB1)
-    (attr virtual)
-    (fp_text reference H1 (at 0 -5) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value 4mm (at 0 5) (layer F.Fab)
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_circle (center 0 0) (end 4 0) (layer Cmts.User) (width 0.15))
-    (fp_circle (center 0 0) (end 4.25 0) (layer F.CrtYd) (width 0.05))
-    (fp_text user %R (at 0.3 0) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 np_thru_hole circle (at 0 0) (size 4 4) (drill 4) (layers *.Cu *.Mask))
-  )
-
-  (module MountingHole:MountingHole_4mm (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832AF3)
-    (at 164 -106.6)
-    (descr "Mounting Hole 4mm, no annular")
-    (tags "mounting hole 4mm no annular")
-    (path /5F9F6D1C)
-    (attr virtual)
-    (fp_text reference H2 (at 0 -5) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value 4mm (at 0 5) (layer F.Fab)
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_circle (center 0 0) (end 4 0) (layer Cmts.User) (width 0.15))
-    (fp_circle (center 0 0) (end 4.25 0) (layer F.CrtYd) (width 0.05))
-    (fp_text user %R (at 0.3 0) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 np_thru_hole circle (at 0 0) (size 4 4) (drill 4) (layers *.Cu *.Mask))
-  )
-
   (module MountingHole:MountingHole_4mm (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D7DF0)
     (at 4.2 -93.8)
     (descr "Mounting Hole 4mm, no annular")
@@ -2528,9 +2488,17 @@
     )
   )
 
+  (gr_line (start 166 -110) (end 180 -110) (layer Edge.Cuts) (width 0.05) (tstamp 5F8D8113))
+  (gr_line (start 46.2 -110) (end 162 -110) (layer Edge.Cuts) (width 0.05) (tstamp 5F8D810F))
+  (gr_line (start 46.2 -106.6) (end 46.2 -110) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 42.2 -106.6) (end 42.2 -110) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 166 -106.6) (end 166 -110) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 162 -106.6) (end 162 -110) (layer Edge.Cuts) (width 0.05))
+  (gr_arc (start 164 -106.6) (end 162 -106.6) (angle -180) (layer Edge.Cuts) (width 0.05) (tstamp 5F8D80C8))
+  (gr_arc (start 44.2 -106.6) (end 42.2 -106.6) (angle -180) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 0 -33.5) (end 0 -110) (layer Edge.Cuts) (width 0.05) (tstamp 5F8342C0))
   (gr_line (start 180 -33.5) (end 0 -33.5) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 180 -110) (end 180 -33.5) (layer Edge.Cuts) (width 0.05))
-  (gr_line (start 0 -110) (end 180 -110) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 0 -110) (end 42.2 -110) (layer Edge.Cuts) (width 0.05))
 
 )
