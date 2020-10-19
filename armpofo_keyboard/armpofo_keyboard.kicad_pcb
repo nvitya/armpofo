@@ -160,7 +160,7 @@
       (net 6 /R4) (zone_connect 0))
   )
 
-  (module PROJECT_LOCAL:Key_landing (layer B.Cu) (tedit 5F8BFD8A) (tstamp 5F832BE3)
+  (module PROJECT_LOCAL:Key_landing (layer B.Cu) (tedit 5F8BFD8A) (tstamp 5F8D7ABF)
     (at 12.1 -99.9)
     (path /5F92A44B)
     (fp_text reference SW1 (at -0.127 -3.556) (layer B.SilkS) hide
@@ -889,7 +889,7 @@
       (net 1 /R1) (zone_connect 0))
   )
 
-  (module PROJECT_LOCAL:Key_landing (layer B.Cu) (tedit 5F8BFD8A) (tstamp 5F832D93)
+  (module PROJECT_LOCAL:Key_landing (layer B.Cu) (tedit 5F8BFD8A) (tstamp 5F8D7E1F)
     (at 10.2 -79.8)
     (path /5F954F87)
     (fp_text reference SW28 (at -0.127 -3.556) (layer B.SilkS) hide
@@ -1457,7 +1457,7 @@
   )
 
   (module PROJECT_LOCAL:Key_landing (layer B.Cu) (tedit 5F8BFD8A) (tstamp 5F832EF3)
-    (at 121.1 -59.5)
+    (at 120.1 -59.5)
     (path /5F97777D)
     (fp_text reference SW50 (at -0.127 -3.556) (layer B.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
@@ -1861,7 +1861,7 @@
       (net 1 /R1) (zone_connect 0))
   )
 
-  (module MountingHole:MountingHole_4mm (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8C7547)
+  (module MountingHole:MountingHole_4mm (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D7B9B)
     (at 44.2 -106.6)
     (descr "Mounting Hole 4mm, no annular")
     (tags "mounting hole 4mm no annular")
@@ -1901,8 +1901,8 @@
     (pad 1 np_thru_hole circle (at 0 0) (size 4 4) (drill 4) (layers *.Cu *.Mask))
   )
 
-  (module MountingHole:MountingHole_4mm (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832AFB)
-    (at 4.3 -93.9)
+  (module MountingHole:MountingHole_4mm (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D7DF0)
+    (at 4.2 -93.8)
     (descr "Mounting Hole 4mm, no annular")
     (tags "mounting hole 4mm no annular")
     (path /5FA28157)
@@ -2041,8 +2041,8 @@
     (pad 1 np_thru_hole circle (at 0 0) (size 4 4) (drill 4) (layers *.Cu *.Mask))
   )
 
-  (module MountingHole:MountingHole_4mm (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832B33)
-    (at 16 -40.1)
+  (module MountingHole:MountingHole_4mm (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D7EFD)
+    (at 16.1 -40)
     (descr "Mounting Hole 4mm, no annular")
     (tags "mounting hole 4mm no annular")
     (path /5FA28CCB)
@@ -2062,7 +2062,7 @@
   )
 
   (module MountingHole:MountingHole_4mm (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832B3B)
-    (at 128 -39.9)
+    (at 128 -39.7)
     (descr "Mounting Hole 4mm, no annular")
     (tags "mounting hole 4mm no annular")
     (path /5FA2CE12)
@@ -2081,8 +2081,8 @@
     (pad 1 np_thru_hole circle (at 0 0) (size 4 4) (drill 4) (layers *.Cu *.Mask))
   )
 
-  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832B4B)
-    (at 32.3 -106.7)
+  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D7B1C)
+    (at 32.3 -106.6)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
     (path /5FA349EF)
@@ -2101,7 +2101,7 @@
     (pad 1 thru_hole circle (at 0 0) (size 5 5) (drill 2.5) (layers *.Cu *.Mask))
   )
 
-  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832B53)
+  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D7B76)
     (at 68.2 -106.6)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
@@ -2121,7 +2121,7 @@
     (pad 1 thru_hole circle (at 0 0) (size 5 5) (drill 2.5) (layers *.Cu *.Mask))
   )
 
-  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832B5B)
+  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D7BC1)
     (at 104.2 -106.6)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
@@ -2162,7 +2162,7 @@
   )
 
   (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832B6B)
-    (at 176.1 -106.6)
+    (at 176 -106.6)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
     (path /5FA33362)
@@ -2181,8 +2181,8 @@
     (pad 1 thru_hole circle (at 0 0) (size 5 5) (drill 2.5) (layers *.Cu *.Mask))
   )
 
-  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8C750C)
-    (at 4.3 -106.6)
+  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D7E64)
+    (at 4.2 -106.6)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
     (path /5FA2DEA6)
@@ -2261,8 +2261,8 @@
     (pad 1 thru_hole circle (at 0 0) (size 5 5) (drill 2.5) (layers *.Cu *.Mask))
   )
 
-  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8C7496)
-    (at 4.3 -66.9)
+  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D7E88)
+    (at 4.2 -66.9)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
     (path /5FA2F614)
@@ -2321,8 +2321,8 @@
     (pad 1 thru_hole circle (at 0 0) (size 5 5) (drill 2.5) (layers *.Cu *.Mask))
   )
 
-  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832BAB)
-    (at 4.3 -40.1)
+  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D7ECA)
+    (at 4.2 -40)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
     (path /5FA2FF97)
@@ -2341,7 +2341,7 @@
     (pad 1 thru_hole circle (at 0 0) (size 5 5) (drill 2.5) (layers *.Cu *.Mask))
   )
 
-  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832BB3)
+  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D5A32)
     (at 140 -39.9)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
@@ -2361,8 +2361,8 @@
     (pad 1 thru_hole circle (at 0 0) (size 5 5) (drill 2.5) (layers *.Cu *.Mask))
   )
 
-  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832BBB)
-    (at 176.1 -39.9)
+  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D5BC7)
+    (at 176 -39.9)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
     (path /5FA321C1)
@@ -2381,8 +2381,8 @@
     (pad 1 thru_hole circle (at 0 0) (size 5 5) (drill 2.5) (layers *.Cu *.Mask))
   )
 
-  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832BC3)
-    (at 40.1 -40.1)
+  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D7F22)
+    (at 40 -40)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
     (path /5FA30588)
@@ -2402,7 +2402,7 @@
   )
 
   (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832BCB)
-    (at 68 -38.4)
+    (at 68.1 -38.4)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
     (path /5FA30D1C)
@@ -2421,7 +2421,7 @@
     (pad 1 thru_hole circle (at 0 0) (size 5 5) (drill 2.5) (layers *.Cu *.Mask))
   )
 
-  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F832BD3)
+  (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5F8D59C8)
     (at 103.9 -38.4)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
