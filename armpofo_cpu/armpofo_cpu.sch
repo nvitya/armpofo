@@ -513,7 +513,7 @@ U 1 1 5F8D19FF
 P 14700 8700
 F 0 "J6" H 14750 9617 50  0000 C CNN
 F 1 "Conn_02x16_Odd_Even" H 14750 9526 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_2x16_P2.54mm_Horizontal" H 14700 8700 50  0001 C CNN
+F 2 "PROJECT_LOCAL:Conn_Edge_PinSocket_2x16_2.54mm" H 14700 8700 50  0001 C CNN
 F 3 "~" H 14700 8700 50  0001 C CNN
 	1    14700 8700
 	1    0    0    -1  
@@ -3010,4 +3010,71 @@ Connection ~ 2250 2400
 Connection ~ 10200 7100
 Wire Wire Line
 	10200 6900 10600 6900
+$Comp
+L Mechanical:MountingHole_Pad H1
+U 1 1 5F9762F5
+P 3500 8900
+F 0 "H1" H 3600 8949 50  0000 L CNN
+F 1 "2mm" H 3600 8858 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_DIN965_Pad" H 3500 8900 50  0001 C CNN
+F 3 "~" H 3500 8900 50  0001 C CNN
+	1    3500 8900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H2
+U 1 1 5F976D56
+P 4000 8900
+F 0 "H2" H 4100 8949 50  0000 L CNN
+F 1 "2mm" H 4100 8858 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_DIN965_Pad" H 4000 8900 50  0001 C CNN
+F 3 "~" H 4000 8900 50  0001 C CNN
+	1    4000 8900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H3
+U 1 1 5F976F04
+P 4500 8900
+F 0 "H3" H 4600 8949 50  0000 L CNN
+F 1 "2mm" H 4600 8858 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_DIN965_Pad" H 4500 8900 50  0001 C CNN
+F 3 "~" H 4500 8900 50  0001 C CNN
+	1    4500 8900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth_Protective #PWR?
+U 1 1 5F9BEB64
+P 4000 9100
+AR Path="/5FD2A278/5F9BEB64" Ref="#PWR?"  Part="1" 
+AR Path="/5F9BEB64" Ref="#PWR0101"  Part="1" 
+F 0 "#PWR0101" H 4250 8850 50  0001 C CNN
+F 1 "Earth_Protective" H 4450 8950 50  0001 C CNN
+F 2 "" H 4000 9000 50  0001 C CNN
+F 3 "~" H 4000 9000 50  0001 C CNN
+	1    4000 9100
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	3500 9000 4000 9000
+Connection ~ 4000 9000
+Wire Wire Line
+	4000 9000 4500 9000
+Wire Wire Line
+	4000 9000 4000 9100
+$Comp
+L Mechanical:MountingHole_Pad H4
+U 1 1 5F9D6D76
+P 5000 8900
+F 0 "H4" H 5100 8949 50  0000 L CNN
+F 1 "2mm" H 5100 8858 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_DIN965_Pad" H 5000 8900 50  0001 C CNN
+F 3 "~" H 5000 8900 50  0001 C CNN
+	1    5000 8900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 9000 5000 9000
+Connection ~ 4500 9000
 $EndSCHEMATC
