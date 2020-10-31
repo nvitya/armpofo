@@ -510,142 +510,142 @@ ADC-BAT
 $Comp
 L Connector_Generic:Conn_02x16_Odd_Even J6
 U 1 1 5F8D19FF
-P 14700 8700
-F 0 "J6" H 14750 9617 50  0000 C CNN
-F 1 "Conn_02x16_Odd_Even" H 14750 9526 50  0000 C CNN
-F 2 "PROJECT_LOCAL:Conn_Edge_PinSocket_2x16_2.54mm" H 14700 8700 50  0001 C CNN
-F 3 "~" H 14700 8700 50  0001 C CNN
-	1    14700 8700
-	1    0    0    -1  
+P 14800 8700
+F 0 "J6" H 14850 9617 50  0000 C CNN
+F 1 "Conn_02x16_Odd_Even" H 14850 9526 50  0000 C CNN
+F 2 "PROJECT_LOCAL:Conn_Edge_PinSocket_2x16_2.54mm" H 14800 8700 50  0001 C CNN
+F 3 "~" H 14800 8700 50  0001 C CNN
+	1    14800 8700
+	-1   0    0    -1  
 $EndComp
 Text Label 15500 9100 2    50   ~ 0
 PC1
-Text Label 14000 8400 0    50   ~ 0
-PA1
-Text Label 14000 8500 0    50   ~ 0
-PA2
-Text Label 14000 8700 0    50   ~ 0
-PA4
-Text Label 14000 8800 0    50   ~ 0
-PA5
-Text Label 14000 9000 0    50   ~ 0
-PA7
-Text Label 15500 9200 2    50   ~ 0
-PC4
-Text Label 15500 9300 2    50   ~ 0
-PC5
-Text Label 15500 8600 2    50   ~ 0
-PB11
-Text Label 15500 8700 2    50   ~ 0
-PB12
-Text Label 15500 8800 2    50   ~ 0
-PB13
-Text Label 15500 8900 2    50   ~ 0
-PB14
-Text Label 15500 9000 2    50   ~ 0
-PB15
-Text Label 14000 9100 0    50   ~ 0
-PA8
-Text Label 14000 9200 0    50   ~ 0
-PD0
-Text Label 14000 9300 0    50   ~ 0
-PD1
 Text Label 15500 8300 2    50   ~ 0
-PB5
-Text Label 15500 8400 2    50   ~ 0
-PB6
+PA1
+Text Label 14000 8400 0    50   ~ 0
+PA2
+Text Label 14000 8500 0    50   ~ 0
+PA4
 Text Label 15500 8500 2    50   ~ 0
+PA5
+Text Label 15500 8600 2    50   ~ 0
+PA7
+Text Label 14000 9200 0    50   ~ 0
+PC4
+Text Label 15500 9200 2    50   ~ 0
+PC5
+Text Label 14000 8900 0    50   ~ 0
+PB11
+Text Label 15500 8900 2    50   ~ 0
+PB12
+Text Label 14000 9000 0    50   ~ 0
+PB13
+Text Label 15500 9000 2    50   ~ 0
+PB14
+Text Label 14000 9100 0    50   ~ 0
+PB15
+Text Label 14000 8700 0    50   ~ 0
+PA8
+Text Label 14000 9300 0    50   ~ 0
+PD0
+Text Label 15500 9300 2    50   ~ 0
+PD1
+Text Label 15500 8700 2    50   ~ 0
+PB5
+Text Label 14000 8800 0    50   ~ 0
+PB6
+Text Label 15500 8800 2    50   ~ 0
 PB7
-Text Label 14000 9500 0    50   ~ 0
-GND
-Text Label 14000 8200 0    50   ~ 0
-3V3
-Text Label 14000 8000 0    50   ~ 0
-5VINT
 Text Label 15500 9500 2    50   ~ 0
-GND
-Text Label 15500 8000 2    50   ~ 0
-5VINT
-Text Label 14000 8100 0    50   ~ 0
-GND
-Text Label 15500 8100 2    50   ~ 0
 GND
 Text Label 15500 8200 2    50   ~ 0
 3V3
-Text Label 14000 9400 0    50   ~ 0
+Text Label 15500 8000 2    50   ~ 0
+5VINT
+Text Label 14000 9500 0    50   ~ 0
+GND
+Text Label 14000 8000 0    50   ~ 0
+5VINT
+Text Label 15500 8100 2    50   ~ 0
+GND
+Text Label 14000 8100 0    50   ~ 0
+GND
+Text Label 14000 8200 0    50   ~ 0
 3V3
 Text Label 15500 9400 2    50   ~ 0
 3V3
-Text Label 14000 8900 0    50   ~ 0
+Text Label 14000 9400 0    50   ~ 0
+3V3
+Text Label 14000 8600 0    50   ~ 0
 PA6
 Text Label 14000 8300 0    50   ~ 0
 PA0
-Text Label 14000 8600 0    50   ~ 0
+Text Label 15500 8400 2    50   ~ 0
 PA3
 Wire Wire Line
-	14000 8000 14500 8000
+	15500 8000 15000 8000
 Wire Wire Line
-	15000 8000 15500 8000
+	14500 8000 14000 8000
 Wire Wire Line
-	14000 8100 14500 8100
+	15500 8100 15000 8100
 Wire Wire Line
-	15000 8100 15500 8100
+	14500 8100 14000 8100
 Wire Wire Line
-	14000 8200 14500 8200
-Wire Wire Line
-	14000 8300 14500 8300
-Wire Wire Line
-	14000 8400 14500 8400
-Wire Wire Line
-	14000 8500 14500 8500
-Wire Wire Line
-	14000 8600 14500 8600
-Wire Wire Line
-	14000 8700 14500 8700
-Wire Wire Line
-	14000 8800 14500 8800
-Wire Wire Line
-	14000 8900 14500 8900
-Wire Wire Line
-	14000 9000 14500 9000
-Wire Wire Line
-	14000 9100 14500 9100
-Wire Wire Line
-	14000 9200 14500 9200
-Wire Wire Line
-	14000 9300 14500 9300
-Wire Wire Line
-	14000 9400 14500 9400
-Wire Wire Line
-	14000 9500 14500 9500
-Wire Wire Line
-	15000 8400 15500 8400
-Wire Wire Line
-	15000 8500 15500 8500
-Wire Wire Line
-	15000 8600 15500 8600
-Wire Wire Line
-	15000 8700 15500 8700
-Wire Wire Line
-	15000 8800 15500 8800
-Wire Wire Line
-	15000 8900 15500 8900
-Wire Wire Line
-	15000 9000 15500 9000
-Wire Wire Line
-	15000 9100 15500 9100
-Wire Wire Line
-	15000 9200 15500 9200
-Wire Wire Line
-	15000 9300 15500 9300
-Wire Wire Line
-	15000 9400 15500 9400
-Wire Wire Line
-	15000 9500 15500 9500
-Wire Wire Line
-	15000 8200 15500 8200
+	15500 8200 15000 8200
 Wire Wire Line
 	15500 8300 15000 8300
+Wire Wire Line
+	15500 8400 15000 8400
+Wire Wire Line
+	15500 8500 15000 8500
+Wire Wire Line
+	15500 8600 15000 8600
+Wire Wire Line
+	15500 8700 15000 8700
+Wire Wire Line
+	15500 8800 15000 8800
+Wire Wire Line
+	15500 8900 15000 8900
+Wire Wire Line
+	15500 9000 15000 9000
+Wire Wire Line
+	15500 9100 15000 9100
+Wire Wire Line
+	15500 9200 15000 9200
+Wire Wire Line
+	15500 9300 15000 9300
+Wire Wire Line
+	15500 9400 15000 9400
+Wire Wire Line
+	15500 9500 15000 9500
+Wire Wire Line
+	14500 8400 14000 8400
+Wire Wire Line
+	14500 8500 14000 8500
+Wire Wire Line
+	14500 8600 14000 8600
+Wire Wire Line
+	14500 8700 14000 8700
+Wire Wire Line
+	14500 8800 14000 8800
+Wire Wire Line
+	14500 8900 14000 8900
+Wire Wire Line
+	14500 9000 14000 9000
+Wire Wire Line
+	14500 9100 14000 9100
+Wire Wire Line
+	14500 9200 14000 9200
+Wire Wire Line
+	14500 9300 14000 9300
+Wire Wire Line
+	14500 9400 14000 9400
+Wire Wire Line
+	14500 9500 14000 9500
+Wire Wire Line
+	14500 8200 14000 8200
+Wire Wire Line
+	14000 8300 14500 8300
 Text Label 5500 1900 2    50   ~ 0
 PA1
 Text Label 5500 2000 2    50   ~ 0
@@ -1396,7 +1396,7 @@ F 3 "~" H 7400 9850 50  0001 C CNN
 	1    7400 9950
 	1    0    0    -1  
 $EndComp
-Text Notes 14050 7750 0    50   ~ 0
+Text Notes 15450 7750 2    50   ~ 0
 Extension
 Text Notes 12000 8600 0    50   ~ 0
 DEBUG
