@@ -8,6 +8,9 @@
 #include "hwpwm.h"
 #include "keymatrix.h"
 
+#include "systimer.h"
+#include "syskeyboard.h"
+
 #include "pofodisplay.h"
 
 TKeyMatrix keys;
@@ -47,13 +50,6 @@ void setup_board()
 #else
   #error "undefined board"
 #endif
-
-volatile unsigned systick = 0;
-
-extern "C" void SysTick_Handler(void)
-{
-	++systick;
-}
 
 void idle_task()
 {
@@ -115,7 +111,9 @@ extern "C" __attribute__((noreturn)) void _start(void)
 
 	mcu_enable_interrupts();
 
-	SysTick_Config(SystemCoreClock / 1000); // required for the contrast control !
+	systimer_init();
+
+	g_keyboard.Init();
 
 	led1pin.Set1();
 
@@ -125,7 +123,7 @@ extern "C" __attribute__((noreturn)) void _start(void)
 
 	g_display.Update();
 
-	setup_keys();
+	//setup_keys();
 
 #if 0
 	g_display.LcdFill('0');
@@ -145,6 +143,13 @@ extern "C" __attribute__((noreturn)) void _start(void)
 
 	unsigned cyclecnt = 0;
 
+	unsigned prev_scanserial = g_keyscan_events.serial;
+	unsigned prev_symserial = g_keysym_events.serial;
+
+	char editrow[128];
+	uint8_t editpos = 0;
+	editrow[0] = 0;
+
 	// Infinite loop
 	while (1)
 	{
@@ -152,13 +157,79 @@ extern "C" __attribute__((noreturn)) void _start(void)
 
 		idle_task();
 
-		keys.Run();
+		//keys.Run();
+		g_keyboard.Run();
 
-		g_display.SetPos(0, 4);
+		g_display.SetPos(0, 2);
 		g_display.printf("cyclecnt = %u\n", cyclecnt);
-		g_display.printf("systick = %u\n", systick);
+		g_display.printf("systick = %u\n", g_sysms);
 		g_display.printf("heartbeat = %u\n", hbcounter);
-		g_display.printf("keys: %08X", keys.keys64 & 0xFFFFFFFF);
+
+		if (prev_scanserial != g_keyscan_events.serial)
+		{
+			TKeyScanEvent * pevent = &g_keyscan_events.events[g_keyscan_events.serial & 31];
+
+			g_display.SetPos(0, 5);
+			g_display.printf("scan %i: ev=%i, key=%2i",
+					 g_keyscan_events.serial,
+					 pevent->evtype,
+					 pevent->scancode
+			);
+
+			prev_scanserial = g_keyscan_events.serial;
+		}
+
+		if (prev_symserial != g_keysym_events.serial)
+		{
+			TKeySymbolEvent * psyme = &g_keysym_events.events[g_keysym_events.serial & 15];
+
+			g_display.SetPos(0, 6);
+			g_display.printf("sym %i: ss=%02X, sym=%04X",
+					 g_keysym_events.serial,
+					 psyme->shiftstate,
+					 psyme->symbol
+			);
+
+			// some processing
+			uint16_t keysym = psyme->symbol;
+			if (KEYSYM_BACKSPACE == keysym)
+			{
+				if (editpos > 0)
+				{
+					--editpos;
+					editrow[editpos] = 0;
+				}
+			}
+			else if (KEYSYM_ENTER == keysym)
+			{
+				// execute
+
+				// reset
+				editpos = 0;
+				editrow[0] = 0;
+			}
+			else if ((editpos < 38) && (keysym >= 32) && (keysym <= 127))
+			{
+				editrow[editpos] = keysym;
+				++editpos;
+			}
+
+			// print editrow
+			g_display.SetPos(0, 7);
+			for (unsigned n = 0; n < 40; n++)
+			{
+				if (n < editpos)
+				{
+					g_display.WriteChar(editrow[n]);
+				}
+				else
+				{
+					g_display.WriteChar(32);
+				}
+			}
+
+			prev_symserial = g_keysym_events.serial;
+		}
 
 		g_display.Update(); // must be called regularly
 
