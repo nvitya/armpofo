@@ -24,7 +24,9 @@ public:
 	unsigned        cposx;
 	unsigned        cposy;
 
-	uint8_t         curcol;
+	bool            cursor_on = true;
+	unsigned        cursor_x = 0;
+	unsigned        cursor_y = 0;
 
 	void            Init(unsigned cols, unsigned arows, uint8_t * ascreenbuf, uint8_t * achangemap);
 
@@ -40,6 +42,7 @@ public:
 	void            Clear();
 
 	virtual void    DrawChar(unsigned aaddr, char ach);
+	virtual void    SetCursor();
 };
 
 #endif /* TEXTSCREEN_H_ */

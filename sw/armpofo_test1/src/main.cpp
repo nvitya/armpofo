@@ -160,10 +160,12 @@ extern "C" __attribute__((noreturn)) void _start(void)
 		//keys.Run();
 		g_keyboard.Run();
 
+#if 0
 		g_display.SetPos(0, 2);
 		g_display.printf("cyclecnt = %u\n", cyclecnt);
 		g_display.printf("systick = %u\n", g_sysms);
 		g_display.printf("heartbeat = %u\n", hbcounter);
+#endif
 
 		if (prev_scanserial != g_keyscan_events.serial)
 		{
@@ -200,6 +202,22 @@ extern "C" __attribute__((noreturn)) void _start(void)
 					editrow[editpos] = 0;
 				}
 			}
+			else if (KEYSYM_UP == keysym)
+			{
+				if (g_display.cursor_y > 0)  --g_display.cursor_y;
+			}
+			else if (KEYSYM_LEFT == keysym)
+			{
+				if (g_display.cursor_x > 0)  --g_display.cursor_x;
+			}
+			else if (KEYSYM_DOWN == keysym)
+			{
+				if (g_display.cursor_y < 7)  ++g_display.cursor_y;
+			}
+			else if (KEYSYM_RIGHT == keysym)
+			{
+				if (g_display.cursor_x < 39)  ++g_display.cursor_x;
+			}
 			else if (KEYSYM_ENTER == keysym)
 			{
 				// execute
@@ -227,6 +245,10 @@ extern "C" __attribute__((noreturn)) void _start(void)
 					g_display.WriteChar(32);
 				}
 			}
+
+			g_display.cursor_on = true;
+			//g_display.cursor_x = editpos;
+			//g_display.cursor_y = 7;
 
 			prev_symserial = g_keysym_events.serial;
 		}

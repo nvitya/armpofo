@@ -117,13 +117,13 @@ void TPofoDisplay::LcdInit()
 	}
 
 	LcdWrite(0x01, 0x75); // character pitch: 6x8
+	LcdWrite(0x04,    7); // cursor position: 7 = last character row
 	LcdWrite(0x02,   39); // horizontal character count: 40 (for character mode only)
 	LcdWrite(0x08,    0); // start address low
 	LcdWrite(0x09,    0); // start address high
+
 	LcdWrite(0x03,   64); // duty: number of rows - 1
-	//LcdWrite(0x00, 0x30); // display mode: 0x30 = display on, master mode, character mode (internal generator)
-	LcdWrite(0x00, 0x31); // display mode: 0x31 = display on, master mode, character mode with external generator
-	//LcdWrite(0x00, 0x32); // display mode: 0x32 = display on, master mode, graphic mode
+	LcdWrite(0x00, mode_base); // display mode: 0x3D = display on, master mode, character mode with external generator, cursor blink
 
 	LcdWrite(0x01, 0x75); // character pitch: 6x8
 }
@@ -145,7 +145,7 @@ void TPofoDisplay::LcdSetAddress(unsigned x, unsigned y)
   unsigned address;
   address = y * 40 + x;
   LcdWrite(0x0A, address & 0xFF);    // writeadress low
-  LcdWrite(0x0B, address >> 0);      // writeadress high
+  LcdWrite(0x0B, address >> 8);      // writeadress high
 
   prevaddr = address;
 }
@@ -245,5 +245,26 @@ void TPofoDisplay::LcdFill(uint8_t adata)
 	for (unsigned n = 0; n < 40*8; ++n)
 	{
 		LcdWrite(0x0C, adata);
+	}
+}
+
+void TPofoDisplay::SetCursor()
+{
+	if (cursor_on)
+	{
+		if (!prev_cursor_on)
+		{
+			LcdWrite(0x00, mode_base | 0xC); // turn on blinking cursor
+			prev_cursor_on = true;
+		}
+		LcdSetAddress(cursor_x, cursor_y);
+	}
+	else
+	{
+		if (prev_cursor_on)
+		{
+			LcdWrite(0x00, mode_base);
+			prev_cursor_on = false;
+		}
 	}
 }

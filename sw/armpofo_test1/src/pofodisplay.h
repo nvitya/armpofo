@@ -18,6 +18,9 @@ private:
 	typedef TTextScreen   parent;
 
 protected:
+	uint8_t   mode_base = 0x31; // character mode with external generator
+	uint8_t   prev_cursor_on = false;
+
 	uint8_t   prevcmd = 0xFF;
 	unsigned  prevaddr = 0x7FFF;
 
@@ -49,7 +52,11 @@ public:
 	void         LcdSetAddress(unsigned addr);
 
 public: // textscreen
+
+
 	virtual void    DrawChar(unsigned aaddr, char ach);  // textscreen mandatory
+	virtual void    SetCursor();
+
 };
 
 extern TPofoDisplay   g_display;

@@ -90,6 +90,7 @@ void TTextScreen::Update()
 {
 	if (!screenchanged)
 	{
+		SetCursor();
 		return;
 	}
 
@@ -116,6 +117,8 @@ void TTextScreen::Update()
 			addr = ((addr+32) & ~31); // go to the next 32 bits
 		}
 	}
+
+	SetCursor();
 
 	screenchanged = false;
 }
@@ -174,3 +177,7 @@ void TTextScreen::DrawChar(unsigned aaddr, char ach)
   // must be implemented in the descendant
 }
 
+void TTextScreen::SetCursor()
+{
+	// can be implemented
+}
