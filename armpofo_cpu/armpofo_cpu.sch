@@ -125,73 +125,73 @@ Wire Wire Line
 	11000 7600 10500 7600
 Wire Wire Line
 	11000 7700 10500 7700
-Text Label 13500 5500 0    50   ~ 0
-KEY-R1
-Text Label 13500 5600 0    50   ~ 0
-KEY-R2
-Text Label 13500 5700 0    50   ~ 0
-KEY-R3
-Text Label 13500 5800 0    50   ~ 0
-KEY-R4
-Text Label 13500 5900 0    50   ~ 0
-KEY-R5
-Text Label 13500 6000 0    50   ~ 0
-KEY-R6
-Text Label 13500 6100 0    50   ~ 0
-KEY-R7
-Text Label 13500 6200 0    50   ~ 0
-KEY-R8
-Text Label 13500 6300 0    50   ~ 0
-KEY-C1
-Text Label 13500 6400 0    50   ~ 0
-KEY-C2
-Text Label 13500 6500 0    50   ~ 0
-KEY-C3
-Text Label 13500 6600 0    50   ~ 0
-KEY-C4
-Text Label 13500 6700 0    50   ~ 0
-KEY-C5
-Text Label 13500 6800 0    50   ~ 0
-KEY-C6
-Text Label 13500 6900 0    50   ~ 0
-KEY-C7
 Text Label 13500 7000 0    50   ~ 0
+KEY-R1
+Text Label 13500 6900 0    50   ~ 0
+KEY-R2
+Text Label 13500 6800 0    50   ~ 0
+KEY-R3
+Text Label 13500 6700 0    50   ~ 0
+KEY-R4
+Text Label 13500 6600 0    50   ~ 0
+KEY-R5
+Text Label 13500 6500 0    50   ~ 0
+KEY-R6
+Text Label 13500 6400 0    50   ~ 0
+KEY-R7
+Text Label 13500 6300 0    50   ~ 0
+KEY-R8
+Text Label 13500 6200 0    50   ~ 0
+KEY-C1
+Text Label 13500 6100 0    50   ~ 0
+KEY-C2
+Text Label 13500 6000 0    50   ~ 0
+KEY-C3
+Text Label 13500 5900 0    50   ~ 0
+KEY-C4
+Text Label 13500 5800 0    50   ~ 0
+KEY-C5
+Text Label 13500 5700 0    50   ~ 0
+KEY-C6
+Text Label 13500 5600 0    50   ~ 0
+KEY-C7
+Text Label 13500 5500 0    50   ~ 0
 KEY-C8
 Wire Wire Line
-	14000 5500 13500 5500
-Wire Wire Line
-	14000 5600 13500 5600
-Wire Wire Line
-	14000 5700 13500 5700
-Wire Wire Line
-	14000 5800 13500 5800
-Wire Wire Line
-	14000 5900 13500 5900
-Wire Wire Line
-	14000 6000 13500 6000
-Wire Wire Line
-	14000 6100 13500 6100
-Wire Wire Line
-	14000 6200 13500 6200
-Wire Wire Line
-	14000 6300 13500 6300
-Wire Wire Line
-	14000 6400 13500 6400
-Wire Wire Line
-	14000 6500 13500 6500
-Wire Wire Line
-	14000 6600 13500 6600
-Wire Wire Line
-	14000 6700 13500 6700
-Wire Wire Line
-	14000 6800 13500 6800
+	14000 7000 13500 7000
 Wire Wire Line
 	14000 6900 13500 6900
 Wire Wire Line
-	14000 7000 13500 7000
+	14000 6800 13500 6800
+Wire Wire Line
+	14000 6700 13500 6700
+Wire Wire Line
+	14000 6600 13500 6600
+Wire Wire Line
+	14000 6500 13500 6500
+Wire Wire Line
+	14000 6400 13500 6400
+Wire Wire Line
+	14000 6300 13500 6300
+Wire Wire Line
+	14000 6200 13500 6200
+Wire Wire Line
+	14000 6100 13500 6100
+Wire Wire Line
+	14000 6000 13500 6000
+Wire Wire Line
+	14000 5900 13500 5900
+Wire Wire Line
+	14000 5800 13500 5800
+Wire Wire Line
+	14000 5700 13500 5700
+Wire Wire Line
+	14000 5600 13500 5600
+Wire Wire Line
+	14000 5500 13500 5500
 Text Notes 10550 5650 0    50   ~ 0
 Hitachi HD61830\nLCD Controller
-Text Notes 13600 5300 0    50   ~ 0
+Text Notes 14100 5200 0    50   ~ 0
 8 x 8 Key Matrix
 Text Label 2900 4300 0    50   ~ 0
 LCD-D0
@@ -400,38 +400,24 @@ Text Label 2900 1800 0    50   ~ 0
 RESET
 Text Label 2900 2000 0    50   ~ 0
 BOOT0
-Text Label 5700 3300 2    50   ~ 0
-KEY-R1
-Text Label 2900 5500 0    50   ~ 0
-KEY-R2
-Text Label 2900 5600 0    50   ~ 0
-KEY-R3
-Text Label 2900 5700 0    50   ~ 0
-KEY-R4
-Text Label 2900 5800 0    50   ~ 0
-KEY-R5
-Text Label 2900 5900 0    50   ~ 0
-KEY-R6
-Text Label 5700 3800 2    50   ~ 0
-KEY-R7
-Text Label 5700 3900 2    50   ~ 0
-KEY-R8
-Text Label 5700 4300 2    50   ~ 0
-KEY-C1
-Text Label 5700 4400 2    50   ~ 0
-KEY-C2
-Text Label 2900 3500 0    50   ~ 0
-KEY-C3
-Text Label 2900 3600 0    50   ~ 0
-KEY-C4
-Text Label 2900 3800 0    50   ~ 0
-KEY-C5
-Text Label 2900 3900 0    50   ~ 0
-KEY-C6
-Text Label 2900 4000 0    50   ~ 0
-KEY-C7
 Text Label 2900 4100 0    50   ~ 0
-KEY-C8
+KEY-R1
+Text Label 2900 4000 0    50   ~ 0
+KEY-R2
+Text Label 2900 3900 0    50   ~ 0
+KEY-R3
+Text Label 2900 3800 0    50   ~ 0
+KEY-R4
+Text Label 2900 3600 0    50   ~ 0
+KEY-R5
+Text Label 2900 3500 0    50   ~ 0
+KEY-R6
+Text Label 5700 4400 2    50   ~ 0
+KEY-R7
+Text Label 5700 4300 2    50   ~ 0
+KEY-R8
+Text Label 5700 3800 2    50   ~ 0
+KEY-C2
 Wire Wire Line
 	3400 6200 2800 6200
 Wire Wire Line
@@ -1251,7 +1237,7 @@ AR Path="/5D5DA43B/5FDA0A4F" Ref="L?"  Part="1"
 AR Path="/5FD2A278/5FDA0A4F" Ref="L?"  Part="1" 
 F 0 "L2" V 8000 1500 50  0000 C CNN
 F 1 "2.2 uH" V 8160 1500 50  0000 C CNN
-F 2 "Inductor_SMD:L_1210_3225Metric_Pad1.42x2.65mm_HandSolder" H 8050 1500 50  0001 C CNN
+F 2 "Inductor_SMD:L_Taiyo-Yuden_NR-40xx_HandSoldering" H 8050 1500 50  0001 C CNN
 F 3 "" H 8050 1500 50  0001 C CNN
 	1    8050 1500
 	0    1    -1   0   
@@ -2198,7 +2184,7 @@ AR Path="/5D5DA43B/5FA40231" Ref="L?"  Part="1"
 AR Path="/5FD2A278/5FA40231" Ref="L?"  Part="1" 
 F 0 "L1" V 10900 1200 50  0000 C CNN
 F 1 "2.2 uH" V 10960 1000 50  0000 C CNN
-F 2 "Inductor_SMD:L_1210_3225Metric_Pad1.42x2.65mm_HandSolder" H 10850 1000 50  0001 C CNN
+F 2 "Inductor_SMD:L_Taiyo-Yuden_NR-40xx_HandSoldering" H 10850 1000 50  0001 C CNN
 F 3 "" H 10850 1000 50  0001 C CNN
 	1    10850 1000
 	0    1    -1   0   
@@ -2564,7 +2550,7 @@ AR Path="/5D5DA43B/603A6E11" Ref="L?"  Part="1"
 AR Path="/5FD2A278/603A6E11" Ref="L?"  Part="1" 
 F 0 "L3" V 13000 3000 50  0000 C CNN
 F 1 "10 uH" V 13160 3000 50  0000 C CNN
-F 2 "Inductor_SMD:L_1210_3225Metric_Pad1.42x2.65mm_HandSolder" H 13050 3000 50  0001 C CNN
+F 2 "Inductor_SMD:L_Taiyo-Yuden_NR-40xx_HandSoldering" H 13050 3000 50  0001 C CNN
 F 3 "" H 13050 3000 50  0001 C CNN
 	1    13050 3000
 	0    1    -1   0   
@@ -3177,6 +3163,76 @@ Wire Wire Line
 Connection ~ 10700 3600
 Wire Wire Line
 	11100 3900 11900 3900
+Text Label 10300 7000 0    50   ~ 0
+LCD-CTRPWM
+NoConn ~ 9500 10500
+NoConn ~ 10000 10500
+NoConn ~ 10500 10500
+NoConn ~ 11000 10500
+Wire Wire Line
+	15000 7000 14500 7000
+Wire Wire Line
+	15000 6900 14500 6900
+Wire Wire Line
+	15000 6800 14500 6800
+Wire Wire Line
+	15000 6700 14500 6700
+Wire Wire Line
+	15000 6600 14500 6600
+Wire Wire Line
+	15000 6500 14500 6500
+Wire Wire Line
+	15000 6400 14500 6400
+Wire Wire Line
+	15000 6300 14500 6300
+Wire Wire Line
+	15000 6200 14500 6200
+Wire Wire Line
+	15000 6100 14500 6100
+Wire Wire Line
+	15000 6000 14500 6000
+Wire Wire Line
+	15000 5900 14500 5900
+Wire Wire Line
+	15000 5800 14500 5800
+Wire Wire Line
+	15000 5700 14500 5700
+Wire Wire Line
+	15000 5600 14500 5600
+Wire Wire Line
+	15000 5500 14500 5500
+Text Label 14500 7000 0    50   ~ 0
+KEY-C8
+Text Label 14500 6900 0    50   ~ 0
+KEY-C7
+Text Label 14500 6800 0    50   ~ 0
+KEY-C6
+Text Label 14500 6700 0    50   ~ 0
+KEY-C5
+Text Label 14500 6600 0    50   ~ 0
+KEY-C4
+Text Label 14500 6500 0    50   ~ 0
+KEY-C3
+Text Label 14500 6400 0    50   ~ 0
+KEY-C2
+Text Label 14500 6300 0    50   ~ 0
+KEY-C1
+Text Label 14500 6200 0    50   ~ 0
+KEY-R8
+Text Label 14500 6100 0    50   ~ 0
+KEY-R7
+Text Label 14500 6000 0    50   ~ 0
+KEY-R6
+Text Label 14500 5900 0    50   ~ 0
+KEY-R5
+Text Label 14500 5800 0    50   ~ 0
+KEY-R4
+Text Label 14500 5700 0    50   ~ 0
+KEY-R3
+Text Label 14500 5600 0    50   ~ 0
+KEY-R2
+Text Label 14500 5500 0    50   ~ 0
+KEY-R1
 $Comp
 L Connector_Generic:Conn_01x16 J10
 U 1 1 5FCD6E2E
@@ -3188,167 +3244,18 @@ F 3 "~" H 15200 6200 50  0001 C CNN
 	1    15200 6200
 	1    0    0    -1  
 $EndComp
-Text Label 14500 5500 0    50   ~ 0
-KEY-R1
-Text Label 14500 5600 0    50   ~ 0
-KEY-R2
-Text Label 14500 5700 0    50   ~ 0
-KEY-R3
-Text Label 14500 5800 0    50   ~ 0
-KEY-R4
-Text Label 14500 5900 0    50   ~ 0
-KEY-R5
-Text Label 14500 6000 0    50   ~ 0
-KEY-R6
-Text Label 14500 6100 0    50   ~ 0
-KEY-R7
-Text Label 14500 6200 0    50   ~ 0
-KEY-R8
-Text Label 14500 6300 0    50   ~ 0
-KEY-C1
-Text Label 14500 6400 0    50   ~ 0
-KEY-C2
-Text Label 14500 6500 0    50   ~ 0
-KEY-C3
-Text Label 14500 6600 0    50   ~ 0
-KEY-C4
-Text Label 14500 6700 0    50   ~ 0
-KEY-C5
-Text Label 14500 6800 0    50   ~ 0
-KEY-C6
-Text Label 14500 6900 0    50   ~ 0
-KEY-C7
-Text Label 14500 7000 0    50   ~ 0
+Text Label 5700 3300 2    50   ~ 0
 KEY-C8
-Wire Wire Line
-	15000 5500 14500 5500
-Wire Wire Line
-	15000 5600 14500 5600
-Wire Wire Line
-	15000 5700 14500 5700
-Wire Wire Line
-	15000 5800 14500 5800
-Wire Wire Line
-	15000 5900 14500 5900
-Wire Wire Line
-	15000 6000 14500 6000
-Wire Wire Line
-	15000 6100 14500 6100
-Wire Wire Line
-	15000 6200 14500 6200
-Wire Wire Line
-	15000 6300 14500 6300
-Wire Wire Line
-	15000 6400 14500 6400
-Wire Wire Line
-	15000 6500 14500 6500
-Wire Wire Line
-	15000 6600 14500 6600
-Wire Wire Line
-	15000 6700 14500 6700
-Wire Wire Line
-	15000 6800 14500 6800
-Wire Wire Line
-	15000 6900 14500 6900
-Wire Wire Line
-	15000 7000 14500 7000
-$Comp
-L Connector_Generic:Conn_01x20 J11
-U 1 1 5FD1C65B
-P 12450 6800
-F 0 "J11" H 12530 6792 50  0000 L CNN
-F 1 "Conn_01x20" V 12600 6150 50  0000 L CNN
-F 2 "Connector_PinHeader_1.27mm:PinHeader_1x20_P1.27mm_Vertical" H 12450 6800 50  0001 C CNN
-F 3 "~" H 12450 6800 50  0001 C CNN
-	1    12450 6800
-	1    0    0    -1  
-$EndComp
-Text Label 11850 6100 0    50   ~ 0
-LCD-5V
-Text Label 11750 6200 0    50   ~ 0
-LCD-D0
-Text Label 11750 6300 0    50   ~ 0
-LCD-D1
-Text Label 11750 6400 0    50   ~ 0
-LCD-D2
-Text Label 11750 6500 0    50   ~ 0
-LCD-D3
-Text Label 11750 6600 0    50   ~ 0
-LCD-D4
-Text Label 11750 6700 0    50   ~ 0
-LCD-D5
-Text Label 11750 6800 0    50   ~ 0
-LCD-D6
-Text Label 11750 6900 0    50   ~ 0
-LCD-D7
-Text Label 11550 7100 0    50   ~ 0
-SOUND-LATCH
-Text Label 11750 7200 0    50   ~ 0
-LCD-RS
-Text Label 11750 7300 0    50   ~ 0
-LCD-E
-Text Label 11750 7400 0    50   ~ 0
-LCD-CS
-Text Label 11750 7500 0    50   ~ 0
-LCD-R~W
-Text Label 11900 7800 0    50   ~ 0
-GND
-Wire Wire Line
-	11750 5900 12250 5900
-Wire Wire Line
-	11750 6000 12250 6000
-Wire Wire Line
-	11750 6100 12250 6100
-Wire Wire Line
-	11750 6200 12250 6200
-Wire Wire Line
-	12250 6300 11750 6300
-Wire Wire Line
-	12250 6400 11750 6400
-Wire Wire Line
-	12250 6500 11750 6500
-Wire Wire Line
-	12250 6600 11750 6600
-Wire Wire Line
-	12250 6700 11750 6700
-Wire Wire Line
-	12250 6800 11750 6800
-Wire Wire Line
-	12250 6900 11750 6900
-Wire Wire Line
-	12250 7100 11550 7100
-Wire Wire Line
-	12250 7200 11750 7200
-Wire Wire Line
-	12250 7300 11750 7300
-Wire Wire Line
-	12250 7400 11750 7400
-Wire Wire Line
-	12250 7500 11750 7500
-Wire Wire Line
-	12250 7600 11750 7600
-Wire Wire Line
-	12250 7700 11750 7700
-Wire Wire Line
-	11750 5900 11750 6000
-Connection ~ 11750 6000
-Wire Wire Line
-	11750 6000 11750 6100
-Wire Wire Line
-	11750 7800 11750 7700
-Wire Wire Line
-	11750 7800 12250 7800
-Connection ~ 11750 7700
-Wire Wire Line
-	11750 7700 11750 7600
-Text Label 10300 7000 0    50   ~ 0
-LCD-CTRPWM
-Text Label 11550 7000 0    50   ~ 0
-LCD-CTRPWM
-Wire Wire Line
-	11550 7000 12250 7000
-NoConn ~ 9500 10500
-NoConn ~ 10000 10500
-NoConn ~ 10500 10500
-NoConn ~ 11000 10500
+Text Label 2900 5500 0    50   ~ 0
+KEY-C7
+Text Label 2900 5600 0    50   ~ 0
+KEY-C6
+Text Label 2900 5700 0    50   ~ 0
+KEY-C5
+Text Label 2900 5800 0    50   ~ 0
+KEY-C4
+Text Label 2900 5900 0    50   ~ 0
+KEY-C3
+Text Label 5700 3900 2    50   ~ 0
+KEY-C1
 $EndSCHEMATC
