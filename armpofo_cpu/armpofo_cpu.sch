@@ -3258,4 +3258,117 @@ Text Label 2900 5900 0    50   ~ 0
 KEY-C3
 Text Label 5700 3900 2    50   ~ 0
 KEY-C1
+$Comp
+L Connector_Generic:Conn_01x20 J11
+U 1 1 5FBDC660
+P 12700 6800
+F 0 "J11" H 12780 6792 50  0000 L CNN
+F 1 "Conn_01x20" V 12850 6100 50  0000 L CNN
+F 2 "Connector_FFC-FPC:TE_2-84952-0_1x20-1MP_P1.0mm_Horizontal" H 12700 6800 50  0001 C CNN
+F 3 "~" H 12700 6800 50  0001 C CNN
+	1    12700 6800
+	1    0    0    -1  
+$EndComp
+Text Label 12100 6100 0    50   ~ 0
+LCD-5V
+Text Label 12000 6200 0    50   ~ 0
+LCD-D0
+Text Label 12000 6300 0    50   ~ 0
+LCD-D1
+Text Label 12000 6400 0    50   ~ 0
+LCD-D2
+Text Label 12000 6500 0    50   ~ 0
+LCD-D3
+Text Label 12000 6600 0    50   ~ 0
+LCD-D4
+Text Label 12000 6700 0    50   ~ 0
+LCD-D5
+Text Label 12000 6800 0    50   ~ 0
+LCD-D6
+Text Label 12000 6900 0    50   ~ 0
+LCD-D7
+Text Label 11800 7100 0    50   ~ 0
+SOUND-LATCH
+Text Label 12000 7200 0    50   ~ 0
+LCD-RS
+Text Label 12000 7300 0    50   ~ 0
+LCD-E
+Text Label 12000 7400 0    50   ~ 0
+LCD-CS
+Text Label 12000 7500 0    50   ~ 0
+LCD-R~W
+Text Label 12150 7800 0    50   ~ 0
+GND
+Wire Wire Line
+	12000 5900 12500 5900
+Wire Wire Line
+	12000 6000 12500 6000
+Wire Wire Line
+	12000 6100 12500 6100
+Wire Wire Line
+	12000 6200 12500 6200
+Wire Wire Line
+	12500 6300 12000 6300
+Wire Wire Line
+	12500 6400 12000 6400
+Wire Wire Line
+	12500 6500 12000 6500
+Wire Wire Line
+	12500 6600 12000 6600
+Wire Wire Line
+	12500 6700 12000 6700
+Wire Wire Line
+	12500 6800 12000 6800
+Wire Wire Line
+	12500 6900 12000 6900
+Wire Wire Line
+	12500 7100 11800 7100
+Wire Wire Line
+	12500 7200 12000 7200
+Wire Wire Line
+	12500 7300 12000 7300
+Wire Wire Line
+	12500 7400 12000 7400
+Wire Wire Line
+	12500 7500 12000 7500
+Wire Wire Line
+	12500 7600 12000 7600
+Wire Wire Line
+	12500 7700 12000 7700
+Wire Wire Line
+	12000 5900 12000 6000
+Connection ~ 12000 6000
+Wire Wire Line
+	12000 6000 12000 6100
+$Comp
+L power:GND #PWR?
+U 1 1 5FBDC68F
+P 11500 7800
+AR Path="/5C6148E8/5FBDC68F" Ref="#PWR?"  Part="1" 
+AR Path="/5FBDC68F" Ref="#PWR032"  Part="1" 
+AR Path="/5D5DA43B/5FBDC68F" Ref="#PWR?"  Part="1" 
+AR Path="/5FD2A278/5FBDC68F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR032" H 11500 7550 50  0001 C CNN
+F 1 "GND" H 11505 7627 50  0000 C CNN
+F 2 "" H 11500 7800 50  0001 C CNN
+F 3 "" H 11500 7800 50  0001 C CNN
+	1    11500 7800
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	11500 7800 12000 7800
+Wire Wire Line
+	12000 7800 12000 7700
+Connection ~ 12000 7800
+Wire Wire Line
+	12000 7800 12500 7800
+Connection ~ 12000 7700
+Wire Wire Line
+	12000 7700 12000 7600
+Wire Wire Line
+	11800 7000 12500 7000
+Text Label 11800 7000 0    50   ~ 0
+LCD-CTRPWM
+Text Notes 11950 5700 0    50   ~ 0
+Backside version
 $EndSCHEMATC
