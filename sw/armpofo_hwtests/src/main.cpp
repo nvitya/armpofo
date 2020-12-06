@@ -1,5 +1,6 @@
 // ATARILCD Main
 
+#include <commandline.h>
 #include "platform.h"
 #include "hwclkctrl.h"
 #include "hwpins.h"
@@ -13,72 +14,9 @@
 #include "sysdisplay.h"
 #include "syskeyboard.h"
 
-uint16_t prev_symserial = 0xFFFF;
-int      editpos = 0;
-char     editrow[256];
+#include "powersave.h"
 
-void run_lineedit()
-{
-	if (prev_symserial != g_keysym_events.serial)
-	{
-		TKeySymbolEvent * psyme = &g_keysym_events.events[g_keysym_events.serial & 15];
-
-		#if 0
-			g_display.SetPos(0, 6);
-			g_display.printf("sym %i: ss=%02X, sym=%04X",
-					 g_keysym_events.serial,
-					 psyme->shiftstate,
-					 psyme->symbol
-			);
-		#endif
-
-		// some processing
-		uint16_t keysym = psyme->symbol;
-		if (KEYSYM_BACKSPACE == keysym)
-		{
-			if (editpos > 0)
-			{
-				--editpos;
-				editrow[editpos] = 0;
-			}
-		}
-		else if (KEYSYM_ENTER == keysym)
-		{
-			// execute
-			g_display.WriteChar(10); // new line
-
-			// reset
-			editpos = 0;
-			editrow[0] = 0;
-		}
-		else if ((editpos < g_display.cols-2) && (keysym >= 32) && (keysym <= 127))
-		{
-			editrow[editpos] = keysym;
-			++editpos;
-		}
-
-		// print editrow
-		g_display.SetPos(0, g_display.rows-1);
-		g_display.WriteChar('>');
-		for (unsigned n = 0; n < g_display.cols-2; n++)
-		{
-			if (n < editpos)
-			{
-				g_display.WriteChar(editrow[n]);
-			}
-			else
-			{
-				g_display.WriteChar(32);
-			}
-		}
-
-		g_display.cursor_on = true;
-		g_display.cursor_x = 1+editpos;
-		g_display.cursor_y = g_display.rows-1;
-
-		prev_symserial = g_keysym_events.serial;
-	}
-}
+TCommandLine  cmdline;
 
 // the C libraries require "_start" so we keep it as the entry point
 extern "C" __attribute__((noreturn)) void _start(void)
@@ -94,19 +32,39 @@ extern "C" __attribute__((noreturn)) void _start(void)
 	// Set the interrupt vector table offset, so that the interrupts and exceptions work
 	mcu_init_vector_table();
 
+	bool standby_wakeup = false;
+
+  /* Check and handle if the system was resumed from StandBy mode */
+  if (PWR->CPUCR & PWR_CPUCR_SBF)
+  {
+    /* Clear Standby flag */
+    PWR->CPUCR = PWR_CPUCR_CSSF;
+
+    //cpu_soft_reset();
+    standby_wakeup = true;
+  }
+
   unsigned clockspeed = MCU_CLOCK_SPEED;
 
-#ifdef MCU_INPUT_FREQ
-	if (!hwclkctrl.InitCpuClock(MCU_INPUT_FREQ, clockspeed))  // activate the external crystal oscillator with multiplication x2
-#else
-	if (!hwclkctrl.InitCpuClockIntRC(MCU_INTRC_SPEED, clockspeed))  // activate the external crystal oscillator with multiplication x2
-#endif
-	{
-		while (1)
+  if (!standby_wakeup)
+  {
+
+	#ifdef MCU_INPUT_FREQ
+		if (!hwclkctrl.InitCpuClock(MCU_INPUT_FREQ, clockspeed))  // activate the external crystal oscillator with multiplication x2
+	#else
+		if (!hwclkctrl.InitCpuClockIntRC(MCU_INTRC_SPEED, clockspeed))  // activate the external crystal oscillator with multiplication x2
+	#endif
 		{
-			// the external oscillator did not start.
+			while (1)
+			{
+				// the external oscillator did not start.
+			}
 		}
-	}
+  }
+  else
+  {
+  	clockspeed = 64000000;
+  }
 
 	// now the MCU runs faster, start the memory, and C/C++ initialization:
 	cppinit();
@@ -122,6 +80,13 @@ extern "C" __attribute__((noreturn)) void _start(void)
 
 	// go on with the hardware initializations
 	board_init();
+
+	if (standby_wakeup)
+	{
+    standby_wakeup_test();	// never returns, either goes back to sleep or resets
+	}
+
+	//---------------------------------------------------------
 
 	mcu_enable_interrupts();
 
@@ -142,7 +107,6 @@ extern "C" __attribute__((noreturn)) void _start(void)
 
 	g_display.Run();
 
-
 	unsigned hbclocks = SystemCoreClock / 2;
 
 	unsigned t0, t1;
@@ -153,6 +117,9 @@ extern "C" __attribute__((noreturn)) void _start(void)
 
 	unsigned prev_scanserial = g_keyscan_events.serial;
 
+	cmdline.Clear();
+	cmdline.Draw();
+
 	// Infinite loop
 	while (1)
 	{
@@ -160,7 +127,9 @@ extern "C" __attribute__((noreturn)) void _start(void)
 
 		g_keyboard.Run();
 
-#if 1
+		cmdline.Run();
+
+#if 0
 		if (prev_scanserial != g_keyscan_events.serial)
 		{
 			TKeyScanEvent * pevent = &g_keyscan_events.events[g_keyscan_events.serial & 31];
@@ -181,8 +150,6 @@ extern "C" __attribute__((noreturn)) void _start(void)
 			g_display.printf("%08X %08X", g_keyboard.keys32[0], g_keyboard.keys32[1]);
 		}
 #endif
-
-		run_lineedit();
 
 		g_display.Run(); // must be called regularly
 
