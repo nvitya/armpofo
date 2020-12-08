@@ -16,6 +16,7 @@
 
 #include "powersave.h"
 #include "battery.h"
+#include "sysproc.h"
 
 TCommandLine  cmdline;
 
@@ -120,55 +121,15 @@ extern "C" __attribute__((noreturn)) void _start(void)
 
 	t0 = CLOCKCNT;
 
-	unsigned cyclecnt = 0;
-
-	unsigned prev_scanserial = g_keyscan_events.serial;
-
 	cmdline.Clear();
 	cmdline.Draw();
 
-	// Infinite loop
+	// Start with the command line processing
 	while (1)
 	{
-		t1 = CLOCKCNT;
-
-		g_keyboard.Run();
+		sys_run();
 
 		cmdline.Run();
-
-#if 0
-		if (prev_scanserial != g_keyscan_events.serial)
-		{
-			TKeyScanEvent * pevent = &g_keyscan_events.events[g_keyscan_events.serial & 31];
-
-      #if 1
-				g_display.SetPos(0, 4);
-				g_display.printf("scan %i: ev=%i, key=%2i",
-						 g_keyscan_events.serial,
-						 pevent->evtype,
-						 pevent->scancode
-				);
-      #endif
-
-			prev_scanserial = g_keyscan_events.serial;
-
-			g_display.SetPos(0, 5);
-
-			g_display.printf("%08X %08X", g_keyboard.keys32[0], g_keyboard.keys32[1]);
-		}
-#endif
-
-		g_display.Run(); // must be called regularly
-
-		if (t1-t0 > hbclocks)
-		{
-			//g_display.printf("Uch = %i mV, I = %i mA\n", battery_get_u_charge_sense(), battery_get_i_charge());
-			pin_led1.Toggle();
-
-			t0 = t1;
-		}
-
-		++cyclecnt;
 	}
 }
 

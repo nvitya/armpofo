@@ -10,19 +10,18 @@
 #include "hwpwm.h"
 #include "clockcnt.h"
 
-#define MAX_CHARGE_PWM      0xA000
+#define BAT_3V3_REF           3340 /// calibrated value
 
-#define BAT_3V3_REF           3304
-
-#define BAT_CHARGE_ZERO       1825
+#define BAT_CHARGE_ZERO       1875
 #define BAT_ISENSE_mOHM        110
 #define BAT_ISENSE_AMP          50
 
 #define BAT_CHARGE_FREQ     400000  // 400 kHz
-#define BAT_CHARGE_DUTY     0x2000  // 90 mA
+#define BAT_CHARGE_DUTY         12  //
 
 THwAdc         g_adc_bat;
 THwPwmChannel  g_bat_charge_pwm;
+int            g_pwm_duty_percent = 0;
 
 int battery_get_u_5V()      // USB 5V Input in mV
 {
@@ -63,26 +62,23 @@ void battery_init()
 	g_bat_charge_pwm.frequency = BAT_CHARGE_FREQ;
 	g_bat_charge_pwm.inverted = true;
   g_bat_charge_pwm.Init(8, 2, 0);  // TIM8/CH2
-  battery_charge_duty(0);
+  battery_set_charge_percent(BAT_CHARGE_DUTY);
   g_bat_charge_pwm.Enable();
 
   // init the pin only after the output was set to high !
 	hwpinctrl.PinSetup(PORTNUM_C, 7, PINCFG_OUTPUT | PINCFG_AF_3 | PINCFG_OPENDRAIN);  // TIM8/CH2: Charge PWM
-	//battery_charge_duty(0xA000);
-
-	battery_charge_duty(BAT_CHARGE_DUTY); // this is light 70 mA charging
-	//battery_charge_duty(0); // this is light 70 mA charging
 }
 
-void battery_charge_duty(uint16_t aduty)
+void battery_set_charge_percent(int apercent)
 {
-	if (aduty > MAX_CHARGE_PWM)
-	{
-		aduty = MAX_CHARGE_PWM;
-	}
-
+	g_pwm_duty_percent = apercent;
 	// the output is inverted, so 0 = no charge, 0xffff = full on - which would burns the electronic!
-  g_bat_charge_pwm.SetOnClocks((g_bat_charge_pwm.periodclocks * aduty) >> 16);
+  g_bat_charge_pwm.SetOnClocks((g_bat_charge_pwm.periodclocks * g_pwm_duty_percent) / 100);
+}
+
+int battery_get_charge_percent()
+{
+  return g_pwm_duty_percent;
 }
 
 void battery_run()

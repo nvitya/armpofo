@@ -7,6 +7,8 @@
 #include "hwclkctrl.h"
 #include "board_config.h"
 #include "powersave.h"
+#include "clockcnt.h"
+#include "sysproc.h"
 
 #include "battery.h"
 
@@ -36,6 +38,9 @@ void enter_powersave()
 void TCommandLine::Run()
 {
 	unsigned n;
+
+	g_display.cursor_on = true;
+
 	if (prev_symserial != g_keysym_events.serial)
 	{
 		TKeySymbolEvent * psyme = &g_keysym_events.events[g_keysym_events.serial & (MAX_KEYSYMEVENTS-1)];
@@ -263,15 +268,62 @@ void TCommandLine::HistLoad(unsigned apos)
 	CorrectStartPos();
 }
 
+void show_battery_status()
+{
+	uint16_t lastkeyserial = g_keysym_events.serial;
+	unsigned st = CLOCKCNT - SystemCoreClock;
+	unsigned t;
+
+	g_display.cursor_on = false;
+
+	while (lastkeyserial == g_keysym_events.serial)
+	{
+		t = CLOCKCNT;
+
+		if (t - st > SystemCoreClock)
+		{
+		  g_display.printf("BAT: %i mV / ", battery_get_u_bat());
+		  g_display.printf("%i mA, ", battery_get_i_charge());
+		  g_display.printf("Supp = %u mV\n", battery_get_u_5V());
+		  st = t;
+		}
+
+		sys_run();
+	}
+}
+
 bool TCommandLine::ExecInternalCommand()
 {
 	sp.Init(&editrow[0], editlen);
 
+	sp.SkipSpaces();
+
 	if (sp.CheckSymbol("bat"))
 	{
-		g_display.printf(" BAT = %i mV / ", battery_get_u_bat());
-		g_display.printf("%i mA, ", battery_get_i_charge());
-		g_display.printf("Supp = %u mV", battery_get_u_5V());
+		show_battery_status();
+		return true;
+	}
+	else if (sp.CheckSymbol("pwm"))
+	{
+		sp.SkipSpaces();
+	  sp.CheckSymbol("(");  // optional
+		sp.SkipSpaces();
+		if (!sp.ReadDecimalNumbers())
+		{
+			g_display.printf(" Actual pwm duty: %i %%", battery_get_charge_percent());
+			return true;
+		}
+
+		int arg = sp.PrevToInt();
+		if ((arg < 0) || (arg > 100))
+		{
+			g_display.printf(" Argument out of range: 0-100");
+			return true;
+		}
+
+		g_display.printf("Setting battery charge to %i %%.", arg);
+		battery_set_charge_percent(arg);
+
 		return true;
 	}
 

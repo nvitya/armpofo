@@ -19,6 +19,7 @@ int battery_get_u_bat();     // Battery Voltage in mV
 int battery_get_i_charge();  // Charging / Discharging current in mA
 int battery_get_u_charge_sense();
 
-void battery_charge_duty(uint16_t aduty); // 0 = off, 65535 = full on (leads to damage!)
+void battery_set_charge_percent(int apercent);
+int battery_get_charge_percent();
 
 #endif /* SRC_BATTERY_H_ */
