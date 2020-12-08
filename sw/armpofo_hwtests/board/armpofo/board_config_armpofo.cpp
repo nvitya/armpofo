@@ -10,6 +10,7 @@
 
 TGpioPin  pin_led1(PORTNUM_D, 15, true);
 
+
 void board_init()
 {
 	pin_led1.Setup(PINCFG_OUTPUT | PINCFG_GPIO_INIT_1); // initialize as off

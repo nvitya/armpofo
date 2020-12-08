@@ -15,6 +15,7 @@
 #include "syskeyboard.h"
 
 #include "powersave.h"
+#include "battery.h"
 
 TCommandLine  cmdline;
 
@@ -81,6 +82,8 @@ extern "C" __attribute__((noreturn)) void _start(void)
 	// go on with the hardware initializations
 	board_init();
 
+	battery_init();
+
 	if (standby_wakeup)
 	{
     standby_wakeup_test();	// never returns, either goes back to sleep or resets
@@ -98,16 +101,20 @@ extern "C" __attribute__((noreturn)) void _start(void)
 
 	g_display.Init();
 
-	g_display.printf("Hello World !\n");
-
 	for (unsigned n = 32; n < 127; ++n)
 	{
 		g_display.WriteChar(n);
 	}
+	g_display.WriteChar('\n');
+
+	delay_us(100);
+	g_display.printf("BAT  = %u mV\n", battery_get_u_bat());
+	g_display.printf("I    = %i mA\n", battery_get_i_charge());
+	g_display.printf("Supp = %u mV\n", battery_get_u_5V());
 
 	g_display.Run();
 
-	unsigned hbclocks = SystemCoreClock / 2;
+	unsigned hbclocks = SystemCoreClock / 1;
 
 	unsigned t0, t1;
 
@@ -155,7 +162,9 @@ extern "C" __attribute__((noreturn)) void _start(void)
 
 		if (t1-t0 > hbclocks)
 		{
+			//g_display.printf("Uch = %i mV, I = %i mA\n", battery_get_u_charge_sense(), battery_get_i_charge());
 			pin_led1.Toggle();
+
 			t0 = t1;
 		}
 

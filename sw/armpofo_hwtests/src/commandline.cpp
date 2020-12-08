@@ -8,6 +8,8 @@
 #include "board_config.h"
 #include "powersave.h"
 
+#include "battery.h"
+
 TExprCalc  g_calc;
 TCalcVar   calcvar;
 
@@ -213,20 +215,6 @@ void TCommandLine::Clear()
 	editrow[0] = 0;
 }
 
-void TCommandLine::Execute()
-{
-	int err = g_calc.Evaluate(&editrow[0], editlen, &calcvar);
-	if (err)
-	{
-		g_display.printf("= [error %i]\n", err);
-	}
-	else
-	{
-		g_display.printf("= %0.8f\n", calcvar.floatvalue);
-	}
-	g_display.WriteChar('>');
-}
-
 void TCommandLine::DeletePos(unsigned apos)
 {
 	unsigned n = apos;
@@ -273,4 +261,37 @@ void TCommandLine::HistLoad(unsigned apos)
 	editpos = editlen;
 	startpos = 0;
 	CorrectStartPos();
+}
+
+bool TCommandLine::ExecInternalCommand()
+{
+	sp.Init(&editrow[0], editlen);
+
+	if (sp.CheckSymbol("bat"))
+	{
+		g_display.printf(" BAT = %i mV / ", battery_get_u_bat());
+		g_display.printf("%i mA, ", battery_get_i_charge());
+		g_display.printf("Supp = %u mV", battery_get_u_5V());
+		return true;
+	}
+
+	return false;
+}
+
+void TCommandLine::Execute()
+{
+
+	if (!ExecInternalCommand())
+	{
+		int err = g_calc.Evaluate(&editrow[0], editlen, &calcvar);
+		if (err)
+		{
+			g_display.printf("= [error %i]", err);
+		}
+		else
+		{
+			g_display.printf("= %0.8f", calcvar.floatvalue);
+		}
+	}
+	g_display.printf("\n>");
 }

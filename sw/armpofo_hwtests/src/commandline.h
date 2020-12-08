@@ -4,6 +4,7 @@
 #define SRC_COMMANDLINE_H_
 
 #include "syskeyboard.h"
+#include "strparse.h"
 
 #define CMDLINE_MAX_LENGTH  252
 
@@ -18,6 +19,7 @@ struct TCmdHist
 class TCommandLine
 {
 public:
+
 	uint16_t  prev_symserial = 0xFFFF;
 
 	int       editpos = 0;
@@ -27,6 +29,8 @@ public:
 
 	int       hist_pos = 0;
 	int       hist_load_pos = 0;
+
+	TStrParseObj sp;
 	TCmdHist  hist[CMDLINE_HIST_LEN];
 
 	virtual   ~TCommandLine();
@@ -35,6 +39,7 @@ public:
 	void      Clear();
 	void      Draw();
 	void      Execute();
+	bool      ExecInternalCommand();
 	void      DeletePos(unsigned apos);
 	void      CorrectStartPos();
 
