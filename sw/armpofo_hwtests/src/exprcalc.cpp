@@ -107,11 +107,23 @@ int TExprCalc::ProcessIdentifier(TCalcVar * rresult)  // input in sp.prevptr + s
 		if (err)  return err;
 		rresult->AssignFloat( exp(arg1.floatvalue) );
 	}
+	else if (sp.UCComparePrev("LN") || sp.UCComparePrev("LOG"))
+	{
+		err = ReadFunctionArgument(&arg1);
+		if (err)  return err;
+		rresult->AssignFloat( log(arg1.floatvalue) );
+	}
 	else if (sp.UCComparePrev("SIN"))
 	{
 		err = ReadFunctionArgument(&arg1);
 		if (err)  return err;
 		rresult->AssignFloat( sin(arg1.floatvalue) );
+	}
+	else if (sp.UCComparePrev("ASIN"))
+	{
+		err = ReadFunctionArgument(&arg1);
+		if (err)  return err;
+		rresult->AssignFloat( asin(arg1.floatvalue) );
 	}
 	else if (sp.UCComparePrev("COS"))
 	{
@@ -119,7 +131,19 @@ int TExprCalc::ProcessIdentifier(TCalcVar * rresult)  // input in sp.prevptr + s
 		if (err)  return err;
 		rresult->AssignFloat( cos(arg1.floatvalue) );
 	}
+	else if (sp.UCComparePrev("ACOS"))
+	{
+		err = ReadFunctionArgument(&arg1);
+		if (err)  return err;
+		rresult->AssignFloat( acos(arg1.floatvalue) );
+	}
 	else if (sp.UCComparePrev("TAN"))
+	{
+		err = ReadFunctionArgument(&arg1);
+		if (err)  return err;
+		rresult->AssignFloat( tan(arg1.floatvalue) );
+	}
+	else if (sp.UCComparePrev("ATAN"))
 	{
 		err = ReadFunctionArgument(&arg1);
 		if (err)  return err;
@@ -248,13 +272,13 @@ int TExprCalc::CalcTerm(TCalcVar * rresult)
 		sp.SkipWhite();
 		if (sp.CheckSymbol("*"))
 		{
-			err = CalcTerm(&var2);
+			err = CalcFactor(&var2);
 			if (err)  break;
 			err = var1.Mul(&var2);
 		}
 		else if (sp.CheckSymbol("/"))
 		{
-			err = CalcTerm(&var2);
+			err = CalcFactor(&var2);
 			if (err)  break;
 			err = var1.Div(&var2);
 		}
