@@ -4,149 +4,149 @@
 
 #include "exprcalc.h"
 #include "math.h"
+#include "string.h"
+#include "stdio.h"
 
-int TCalcVar::Add(TCalcVar * avar)
-{
-	floatvalue = floatvalue + avar->floatvalue;
-	return EEXPR_OK;
-}
-
-int TCalcVar::Sub(TCalcVar * avar)
-{
-	floatvalue = floatvalue - avar->floatvalue;
-	return EEXPR_OK;
-}
-
-int TCalcVar::Mul(TCalcVar * avar)
-{
-	floatvalue = floatvalue * avar->floatvalue;
-	return EEXPR_OK;
-}
-
-int TCalcVar::Div(TCalcVar * avar)
-{
-	if (avar->floatvalue == 0.0l)
-	{
-		return EEXPR_DIV_BY_ZERO;
-	}
-	floatvalue = floatvalue / avar->floatvalue;
-	return EEXPR_OK;
-}
-
-int TCalcVar::Pow(TCalcVar * avar)
-{
-	floatvalue = pow(floatvalue, avar->floatvalue);
-	return EEXPR_OK;
-}
-
-int TCalcVar::Assign(TCalcVar * avar)
+void TCalcValue::Assign(TCalcValue * avar)
 {
 	floatvalue = avar->floatvalue;
-	return EEXPR_OK;
 }
 
-int TCalcVar::AssignU32(unsigned auint)
+void TCalcValue::AssignU32(unsigned auint)
 {
 	floatvalue = auint;
-	return EEXPR_OK;
 }
 
-int TCalcVar::AssignFloat(double afloat)
+void TCalcValue::AssignFloat(double afloat)
 {
 	floatvalue = afloat;
-	return EEXPR_OK;
 }
 
-int TCalcVar::Negate()
-{
-	floatvalue = -floatvalue;
-	return EEXPR_OK;
-}
 
 //-----------------------------------------------------------------------
 
-int TExprCalc::Evaluate(const char * aexpr, unsigned aexprlen, TCalcVar * rresult)
+bool TExprCalc::Evaluate(const char * aexpr, unsigned aexprlen, TCalcValue * rresult)
 {
 	expression = aexpr;
 	exprlen = aexprlen;
 
+	errormsg[0] = 0;
+	error = false;
+	store_result = false;
+
 	sp.Init((char *)expression, exprlen);
+	sp.SkipSpaces();
 
-	error = CalcExpression(rresult);
-	return error;
+	// check for result storage: "X = 123"
+	if (sp.ReadToChar('='))
+	{
+		sp.CheckSymbol("="); // skip
+		sp.SkipSpaces();
+		char * exprbegin = sp.readptr;  // save the begin of the expression
+
+		// now parse the variable name
+		sp.Init((char *)expression, exprlen);
+		sp.SkipSpaces();
+		if (sp.ReadIdentifier())
+		{
+			if (sp.prevlen >= CALC_VAR_NAME_LENGTH)
+			{
+				return SetError("Variable name too long");
+			}
+			else
+			{
+			  store_result = true;
+			  strncpy(&store_varname[0], sp.prevptr, sp.prevlen);
+			  sp.readptr = exprbegin;
+			}
+		}
+		else
+		{
+			return SetError("Identifier before \"=\" is missing");
+		}
+	}
+	else
+	{
+		sp.readptr = sp.bufstart;
+	}
+
+	if (!CalcExpression(rresult))
+	{
+		return false;
+	}
+
+	ans.Assign(rresult);
+
+	if (store_result)
+	{
+		SetVar(&store_varname[0], rresult);
+	}
+
+	return true;
 }
 
-int TExprCalc::ReadFunctionArgument(TCalcVar * rresult)  // expects '(' expr. ')'
+bool TExprCalc::ReadFunctionArgument(TCalcValue * rresult)  // expects '(' expr. ')'
 {
-	int err = EEXPR_OK;
 	sp.SkipSpaces();
-	if (!sp.CheckSymbol("("))  return EEXPR_OPENING_BRACKET_MISSING;
+	if (!sp.CheckSymbol("("))  return SetError("\"(\" is missing");
 	sp.SkipSpaces();
-	err = CalcExpression(rresult);
-	if (err)  return err;
+	if (!CalcExpression(rresult))
+	{
+		return false;
+	}
 	sp.SkipSpaces();
-	if (!sp.CheckSymbol(")"))  return EEXPR_CLOSING_BRACKET_MISSING;
+	if (!sp.CheckSymbol(")"))  return SetError("\")\" is missing");
 	sp.SkipSpaces();
-  return err;
+  return true;
 }
 
-int TExprCalc::ProcessIdentifier(TCalcVar * rresult)  // input in sp.prevptr + sp.prevlen
+bool TExprCalc::ProcessIdentifier(TCalcValue * rresult)  // input in sp.prevptr + sp.prevlen
 {
-	int       err = EEXPR_OK;
-	TCalcVar  arg1;
+	TCalcValue  arg1;
 
 	if (sp.UCComparePrev("SQRT"))
 	{
-		err = ReadFunctionArgument(&arg1);
-		if (err)  return err;
+		if (!ReadFunctionArgument(&arg1))  return false;
 		rresult->AssignFloat( sqrt(arg1.floatvalue) );
 	}
 	else if (sp.UCComparePrev("EXP"))
 	{
-		err = ReadFunctionArgument(&arg1);
-		if (err)  return err;
+		if (!ReadFunctionArgument(&arg1))  return false;
 		rresult->AssignFloat( exp(arg1.floatvalue) );
 	}
 	else if (sp.UCComparePrev("LN") || sp.UCComparePrev("LOG"))
 	{
-		err = ReadFunctionArgument(&arg1);
-		if (err)  return err;
+		if (!ReadFunctionArgument(&arg1))  return false;
 		rresult->AssignFloat( log(arg1.floatvalue) );
 	}
 	else if (sp.UCComparePrev("SIN"))
 	{
-		err = ReadFunctionArgument(&arg1);
-		if (err)  return err;
+		if (!ReadFunctionArgument(&arg1))  return false;
 		rresult->AssignFloat( sin(arg1.floatvalue) );
 	}
 	else if (sp.UCComparePrev("ASIN"))
 	{
-		err = ReadFunctionArgument(&arg1);
-		if (err)  return err;
+		if (!ReadFunctionArgument(&arg1))  return false;
 		rresult->AssignFloat( asin(arg1.floatvalue) );
 	}
 	else if (sp.UCComparePrev("COS"))
 	{
-		err = ReadFunctionArgument(&arg1);
-		if (err)  return err;
+		if (!ReadFunctionArgument(&arg1))  return false;
 		rresult->AssignFloat( cos(arg1.floatvalue) );
 	}
 	else if (sp.UCComparePrev("ACOS"))
 	{
-		err = ReadFunctionArgument(&arg1);
-		if (err)  return err;
+		if (!ReadFunctionArgument(&arg1))  return false;
 		rresult->AssignFloat( acos(arg1.floatvalue) );
 	}
 	else if (sp.UCComparePrev("TAN"))
 	{
-		err = ReadFunctionArgument(&arg1);
-		if (err)  return err;
+		if (!ReadFunctionArgument(&arg1))  return false;
 		rresult->AssignFloat( tan(arg1.floatvalue) );
 	}
 	else if (sp.UCComparePrev("ATAN"))
 	{
-		err = ReadFunctionArgument(&arg1);
-		if (err)  return err;
+		if (!ReadFunctionArgument(&arg1))  return false;
 		rresult->AssignFloat( tan(arg1.floatvalue) );
 	}
 
@@ -155,31 +155,54 @@ int TExprCalc::ProcessIdentifier(TCalcVar * rresult)  // input in sp.prevptr + s
 	{
 		rresult->AssignFloat( M_PI );
 	}
+	else if (sp.UCComparePrev("ANS"))  // previous result
+	{
+		rresult->Assign(&ans);
+	}
 	else
 	{
-		return EEXPR_UNKNOWN_IDENTIFIER;
+		// search trough the variables
+		unsigned n;
+		for (n = 0; n < CALC_VAR_COUNT; ++n)
+		{
+			TCalcVar * pvar = &varlist[n];
+			if (pvar->use_count && sp.ComparePrev(pvar->name))
+			{
+				++(pvar->use_count);
+				rresult->Assign( &pvar->value );
+				return true;
+			}
+		}
+
+		// else not found.
+
+		char idnamestr[CALC_VAR_NAME_LENGTH];
+		strncpy(&idnamestr[0], sp.prevptr, sizeof(idnamestr));
+		sprintf(&errormsg[0], "Unknown identifier \"%s\"", &idnamestr[0]);
+		error = true;
+		return false;
 	}
 
-	return err;
+	return true;
 }
 
-int TExprCalc::CalcNumber(TCalcVar * rresult)
+bool TExprCalc::CalcNumber(TCalcValue * rresult)
 {
-	TCalcVar  var1;
-	int       err = EEXPR_OK;
+	TCalcValue  var1;
 	bool      negate = false;
 
 	sp.SkipWhite();
 
 	if (sp.CheckSymbol("("))
 	{
-		err = CalcExpression(&var1);
+		if (!CalcExpression(&var1))  return false;
+
 		if (!sp.CheckSymbol(")"))
 		{
-			return EEXPR_CLOSING_BRACKET_MISSING;
+			return SetError("\")\" is missing");
 		}
 		rresult->Assign(&var1);
-		return err;
+		return true;
 	}
 
 	// single constant or variable
@@ -191,6 +214,11 @@ int TExprCalc::CalcNumber(TCalcVar * rresult)
 
 	sp.SkipSpaces();
 
+	if (sp.readptr >= sp.bufend)
+	{
+		return SetError("Number is missing");
+	}
+
 	char c = *sp.readptr;
 	if (((c >= '0') && (c <= '9')) || ('.' == c))
 	{
@@ -200,7 +228,7 @@ int TExprCalc::CalcNumber(TCalcVar * rresult)
 			// hex value
 			if (!sp.ReadHexNumbers())
 			{
-				return EEXPR_INVALID_HEX_NUMBER;
+				return SetError("Invalid Hex Number");
 			}
 			var1.AssignU32(sp.PrevHexToInt());
 		}
@@ -213,40 +241,42 @@ int TExprCalc::CalcNumber(TCalcVar * rresult)
 	{
 		// identifier (variable or function)
 		sp.ReadAlphaNum();
-		err = ProcessIdentifier(&var1);
-		if (err)
-		{
-			return err;
-		}
+		if (!ProcessIdentifier(&var1))  return false;
 	}
 	else
 	{
-		return EEXPR_INVALID_CHAR;
+		sprintf(&errormsg[0], "Invalid char: \"%c\"", c);
+		error = true;
+		return false;
 	}
 
 	if (negate)
 	{
-		var1.Negate();
+		var1.AssignFloat( -var1.floatvalue );
 	}
 
 	rresult->Assign(&var1);
 
-	return err;
+	return true;
 }
 
-int TExprCalc::CalcFactor(TCalcVar * rresult)
+bool TExprCalc::CalcFactor(TCalcValue * rresult)
 {
-	TCalcVar var1;
-	TCalcVar var2;
-	int err = CalcNumber(&var1);
-	while (!err)
+	TCalcValue var1;
+	TCalcValue var2;
+
+	if (!CalcNumber(&var1))
+	{
+		return false;
+	}
+
+	while (!error)
 	{
 		sp.SkipWhite();
 		if (sp.CheckSymbol("^"))
 		{
-			err = CalcNumber(&var2);
-			if (err)  break;
-			err = var1.Pow(&var2);
+			if (!CalcNumber(&var2))  return false;
+			var1.AssignFloat( pow(var1.floatvalue, var2.floatvalue) );
 		}
 		else
 		{
@@ -254,33 +284,42 @@ int TExprCalc::CalcFactor(TCalcVar * rresult)
 		}
 	}
 
-	if (!err)
+	if (!error)
 	{
 		rresult->Assign(&var1);
 	}
 
-	return err;
+	return true;
 }
 
-int TExprCalc::CalcTerm(TCalcVar * rresult)
+bool TExprCalc::CalcTerm(TCalcValue * rresult)
 {
-	TCalcVar var1;
-	TCalcVar var2;
-	int err = CalcFactor(&var1);
-	while (!err)
+	TCalcValue var1;
+	TCalcValue var2;
+	if (!CalcFactor(&var1))
+	{
+		return false;
+	}
+
+	while (!error)
 	{
 		sp.SkipWhite();
 		if (sp.CheckSymbol("*"))
 		{
-			err = CalcFactor(&var2);
-			if (err)  break;
-			err = var1.Mul(&var2);
+			if (!CalcFactor(&var2))  return false;
+			var1.AssignFloat( var1.floatvalue * var2.floatvalue );
 		}
 		else if (sp.CheckSymbol("/"))
 		{
-			err = CalcFactor(&var2);
-			if (err)  break;
-			err = var1.Div(&var2);
+			if (!CalcFactor(&var2))  return false;
+			if (var2.floatvalue == 0.0)
+			{
+				return SetError("Division by zero");
+			}
+			else
+			{
+				var1.AssignFloat( var1.floatvalue / var2.floatvalue );
+			}
 		}
 		else
 		{
@@ -288,33 +327,35 @@ int TExprCalc::CalcTerm(TCalcVar * rresult)
 		}
 	}
 
-	if (!err)
+	if (!error)
 	{
 		rresult->Assign(&var1);
 	}
 
-	return err;
+	return true;
 }
 
-int TExprCalc::CalcExpression(TCalcVar * rresult)
+bool TExprCalc::CalcExpression(TCalcValue * rresult)
 {
-	TCalcVar var1;
-	TCalcVar var2;
-	int err = CalcTerm(&var1);
-	while (!err)
+	TCalcValue var1;
+	TCalcValue var2;
+	if (!CalcTerm(&var1))
+	{
+		return false;
+	}
+
+	while (!error)
 	{
 		sp.SkipWhite();
 		if (sp.CheckSymbol("+"))
 		{
-			err = CalcTerm(&var2);
-			if (err)  break;
-			err = var1.Add(&var2);
+			if (!CalcTerm(&var2))  return false;
+			var1.AssignFloat( var1.floatvalue + var2.floatvalue );
 		}
 		else if (sp.CheckSymbol("-"))
 		{
-			err = CalcTerm(&var2);
-			if (err)  break;
-			err = var1.Sub(&var2);
+			if (!CalcTerm(&var2))  return false;
+			var1.AssignFloat( var1.floatvalue - var2.floatvalue );
 		}
 		else
 		{
@@ -322,11 +363,55 @@ int TExprCalc::CalcExpression(TCalcVar * rresult)
 		}
 	}
 
-	if (!err)
+	if (!error)
 	{
 		rresult->Assign(&var1);
 	}
 
-	return err;
+	return true;
 }
 
+bool TExprCalc::SetError(const char * aerrormsg)
+{
+	strncpy(&errormsg[0], aerrormsg, sizeof(errormsg));
+	error = true;
+	return false;
+}
+
+void TExprCalc::SetVar(const char * avarname, TCalcValue * avalue)
+{
+	unsigned n;
+	TCalcVar * pvar;
+	TCalcVar * pvictim = nullptr;
+
+	for (n = 0; n < CALC_VAR_COUNT; ++n)
+	{
+		pvar = &varlist[n];
+		if (pvar->use_count == 0) // empty, when we are so far then this is it
+		{
+			strncpy(&pvar->name[0], avarname, CALC_VAR_NAME_LENGTH);
+			pvar->value.Assign(avalue);
+			pvar->use_count = 1;
+			return;
+		}
+
+		if (strncmp(pvar->name, avarname, CALC_VAR_NAME_LENGTH) == 0)
+		{
+			++(pvar->use_count);
+			pvar->value.Assign(avalue);
+			return;
+		}
+
+		if (!pvictim || (pvictim->use_count > pvar->use_count))
+		{
+			pvictim = pvar;
+		}
+	}
+
+	if (pvictim)  // this should be set, when we are so far
+	{
+		strncpy(&pvar->name[0], avarname, CALC_VAR_NAME_LENGTH);
+		pvar->value.Assign(avalue);
+		pvar->use_count = 1;
+	}
+}

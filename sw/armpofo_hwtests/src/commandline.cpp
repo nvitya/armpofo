@@ -13,7 +13,7 @@
 #include "battery.h"
 
 TExprCalc  g_calc;
-TCalcVar   calcvar;
+TCalcValue   calcvar;
 
 TCommandLine::~TCommandLine()
 {
@@ -332,17 +332,19 @@ bool TCommandLine::ExecInternalCommand()
 
 void TCommandLine::Execute()
 {
-
-	if (!ExecInternalCommand())
+	if (ExecInternalCommand())
 	{
-		int err = g_calc.Evaluate(&editrow[0], editlen, &calcvar);
-		if (err)
+		// print already done there
+	}
+	else // try to evaluate as math expression
+	{
+		if (g_calc.Evaluate(&editrow[0], editlen, &calcvar))
 		{
-			g_display.printf("= [error %i]", err);
+			g_display.printf("= %0.8f", calcvar.floatvalue);
 		}
 		else
 		{
-			g_display.printf("= %0.8f", calcvar.floatvalue);
+			g_display.printf("ERR: %s", &g_calc.errormsg[0]);
 		}
 	}
 	g_display.printf("\n>");

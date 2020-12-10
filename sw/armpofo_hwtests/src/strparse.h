@@ -29,6 +29,7 @@ class TStrParseObj
     bool ReadLine();                 // sets prevptr, prevlen
     bool ReadTo(const char * checkchars);  // sets prevptr, prevlen
     bool ReadToChar(char achar);     // sets prevptr, prevlen
+    bool ReadIdentifier();           // sets prevptr, prevlen
     bool ReadAlphaNum();             // sets prevptr, prevlen
     bool ReadDecimalNumbers();       // sets prevptr, prevlen
     bool ReadHexNumbers();           // sets prevptr, prevlen
@@ -38,6 +39,7 @@ class TStrParseObj
 
     double ParseFloatNumber();
 
+    bool ComparePrev(const char * checkstring);
     bool UCComparePrev(const char * checkstring);
     int PrevToInt();
     unsigned PrevHexToInt();
@@ -49,6 +51,7 @@ class TStrParseObj
 
 typedef TStrParseObj *  PStrParseObj;
 
+bool PCharCompare(char * * ReadPtr, int len, const char * checkstring);
 bool PCharUCCompare(char * * ReadPtr, int len, const char * checkstring);
 int PCharToInt(char * ReadPtr, int len);
 unsigned PCharHexToInt(char * ReadPtr, int len);

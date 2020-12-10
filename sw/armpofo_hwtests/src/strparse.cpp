@@ -241,6 +241,38 @@ bool TStrParseObj::ReadAlphaNum()
   return result;
 }
 
+bool TStrParseObj::ReadIdentifier()
+{
+  char * cp = readptr;
+  bool result = false;
+
+  prevptr = readptr;
+
+  while (cp < bufend)
+  {
+    char c = *cp;
+
+    if (
+        ((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z'))
+        || (c == '_')
+        || ((c >= '0') && (c <= '9') && (cp > readptr)) // not allowed at the beginning
+       )
+    {
+      result = true;
+      ++cp;
+    }
+    else
+    {
+      break;
+    }
+  }
+
+  prevlen = cp - readptr;
+  readptr = cp;
+
+  return result;
+}
+
 bool TStrParseObj::ReadDecimalNumbers()
 {
   char * cp = readptr;
@@ -369,6 +401,11 @@ bool TStrParseObj::ReadQuotedString()
   return true;
 }
 
+bool TStrParseObj::ComparePrev(const char * checkstring)
+{
+  return PCharCompare(&prevptr, prevlen, checkstring);
+}
+
 bool TStrParseObj::UCComparePrev(const char * checkstring)
 {
   return PCharUCCompare(&prevptr, prevlen, checkstring);
@@ -407,6 +444,34 @@ int TStrParseObj::GetLineNum()
 }
 
 //-------------------------------------------------------------------------
+
+bool PCharCompare(char * * ReadPtr, int len, const char * checkstring)
+{
+  char * cp = *ReadPtr;
+  char * bufend = cp + len;
+  char * csptr = (char *)checkstring;
+  char * csend = csptr + strlen(checkstring);
+
+  while ((csptr < csend) and (cp < bufend))
+  {
+    char c = *cp;
+     if (c != *csptr)
+    {
+      break;
+    }
+
+    ++csptr;
+    ++cp;
+  }
+
+  if (csptr != csend)
+  {
+    return false;
+  }
+
+  *ReadPtr = cp;
+  return true;
+}
 
 bool PCharUCCompare(char * * ReadPtr, int len, const char * checkstring)
 {
