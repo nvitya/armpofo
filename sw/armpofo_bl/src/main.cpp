@@ -150,8 +150,6 @@ extern "C" __attribute__((noreturn)) void _start(void)
 	// go on with the hardware initializations
 	board_init();
 
-	battery_init();
-
 	if (standby_wakeup)
 	{
     standby_wakeup_test();	// never returns, either goes back to sleep or resets
@@ -171,6 +169,8 @@ extern "C" __attribute__((noreturn)) void _start(void)
 	mcu_enable_interrupts();
 
 	systimer_init();
+
+	battery_init();
 
 	g_keyboard.Init();
 
