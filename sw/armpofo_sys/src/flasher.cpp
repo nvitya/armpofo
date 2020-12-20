@@ -8,7 +8,7 @@
 
 #define FLASHER_BUFSIZE  4096
 
-bool flasher_copy(void * memaddr, uint32_t flashaddr, uint32_t len, unsigned tempbuf_4k_addr)
+bool flasher_copy(void * memaddr, uint32_t flashaddr, uint32_t len, void * tempbuf_4k_addr)
 {
 	unsigned t0, t1;
 
@@ -16,7 +16,7 @@ bool flasher_copy(void * memaddr, uint32_t flashaddr, uint32_t len, unsigned tem
 
 	uint8_t * flasherbuf = (uint8_t *)tempbuf_4k_addr;
 
-	TRACE("Fl. m%08X -> f%06X, len = %u\n", memaddr, flashaddr, len);
+	TRACE("Fl. m%08X -> f%06X, len = %u\r\n", memaddr, flashaddr, len);
 	TRACE_FLUSH();
 
 	t0 = CLOCKCNT;
@@ -44,7 +44,7 @@ bool flasher_copy(void * memaddr, uint32_t flashaddr, uint32_t len, unsigned tem
 
 		if (g_extflash.errorcode != 0)
 		{
-			TRACE(" ERROR = %i\n", g_extflash.errorcode);
+			TRACE(" ERROR = %i\r\n", g_extflash.errorcode);
 			return false;
 		}
 
@@ -108,7 +108,7 @@ bool flasher_copy(void * memaddr, uint32_t flashaddr, uint32_t len, unsigned tem
 
 	unsigned clocksperus = SystemCoreClock / 1000000;
 
-	TRACE("\n  Finished in %u us\n", (t1 - t0) / clocksperus);
+	TRACE("\r\n  Finished in %u us\r\n", (t1 - t0) / clocksperus);
 	TRACE_FLUSH();
 
 	return true;

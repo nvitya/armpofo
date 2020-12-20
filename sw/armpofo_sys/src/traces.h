@@ -29,11 +29,13 @@
 #ifndef __Traces__h
 #define __Traces__h
 
-#include "sysdisplay.h"
+#include "hwuart.h"
+
+extern THwUart trace_uart;
 
 // ignore traces
-#define TRACE(...)    { g_display.printf( __VA_ARGS__ ); }
-#define TRACE_FLUSH() { g_display.Run(); }
+#define TRACE(...)  { trace_uart.printf( __VA_ARGS__ ); }
+#define TRACE_FLUSH(...)
 
 #ifdef LTRACES
  #define LTRACE(...)  TRACE( __VA_ARGS__ )
@@ -42,6 +44,8 @@
 #endif
 
 #undef LTRACES
+
+void traces_init();
 
 #endif //!defined(Traces__h)
 

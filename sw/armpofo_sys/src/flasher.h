@@ -5,6 +5,6 @@
 
 #include "stdint.h"
 
-bool flasher_copy(void * memaddr, uint32_t flashaddr, uint32_t len, unsigned tempbuf_4k_addr);
+bool flasher_copy(void * memaddr, uint32_t flashaddr, uint32_t len, void * tempbuf_4k_addr);
 
 #endif /* SRC_FLASHER_H_ */

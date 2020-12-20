@@ -36,6 +36,6 @@
 
 #define MCU_CLOCK_SPEED  100000000  // run only at 100 MHz to spare some energy
 
-#define SYS_APPLICATION          0  // 0 = system
+#define SYS_APPLICATION          1  // 1 = application
 
 #endif /* BOARD_H_ */

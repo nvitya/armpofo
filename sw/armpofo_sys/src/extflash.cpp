@@ -33,10 +33,10 @@ void TExtFlash::Init()
 	has4kerase = true;
 	if (!super::Init())
 	{
-		TRACE("QSPI Flash init failed!\n");
+		TRACE("QSPI Flash init failed!\r\n");
 		return;
 	}
 
-	TRACE("QSPI ID = %06X, kbyte size = %u\n", idcode, (bytesize >> 10));
+	TRACE("QSPI ID = %06X, kbyte size = %u\r\n", idcode, (bytesize >> 10));
 
 }

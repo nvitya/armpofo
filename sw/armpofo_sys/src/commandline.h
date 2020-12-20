@@ -40,6 +40,7 @@ public:
 	void      Draw();
 	void      Execute();
 	bool      ExecInternalCommand();
+	bool      ExecApplication();
 	void      DeletePos(unsigned apos);
 	void      CorrectStartPos();
 

@@ -19,7 +19,7 @@
 #include "battery.h"
 #include "sysproc.h"
 #include "extflash.h"
-#include "apsysif.h"
+#include "sysif.h"
 #include "flasher.h"
 
 #include "traces.h"
@@ -63,12 +63,6 @@ extern "C" __attribute__((section(".startup"))) void _start(void)
   asm("bx   r1");
 }
 
-
-extern "C" void * apsys_get_proc_addr(const char * aname)
-{
-	return nullptr;
-}
-
 extern unsigned __image_end;
 
 void run_flasher()
@@ -85,17 +79,17 @@ void run_flasher()
   // CODE
 
   volatile unsigned imgend = unsigned(&__image_end);
-  volatile unsigned imgsize = imgend - APSYS_SYS_LOAD_ADDR - sizeof(TAppHeader);
+  volatile unsigned imgsize = imgend - SYSIF_SYS_LOAD_ADDR - sizeof(TAppHeader);
 
-	pheader = (TAppHeader *)APSYS_SYS_LOAD_ADDR;
-	startaddr = APSYS_SYS_LOAD_ADDR + sizeof(TAppHeader);
-	cs = apsys_content_checksum((void *)startaddr, pheader->content_length);
+	pheader = (TAppHeader *)SYSIF_SYS_LOAD_ADDR;
+	startaddr = SYSIF_SYS_LOAD_ADDR + sizeof(TAppHeader);
+	cs = sys_content_checksum((void *)startaddr, pheader->content_length);
 	pheader->content_checksum = cs;
-	pheader->header_checksum = apsys_header_checksum(pheader);
+	pheader->header_checksum = sys_header_checksum(pheader);
 
-  copylength = unsigned(&__image_end) - APSYS_SYS_LOAD_ADDR;
+  copylength = unsigned(&__image_end) - SYSIF_SYS_LOAD_ADDR;
   copylength = ((copylength + 255) & 0xFFF00);
-	flasher_copy((void *)(APSYS_SYS_LOAD_ADDR), APSYS_SYS_FLASH_ADDR, copylength, unsigned(tempbuf));
+	flasher_copy((void *)(SYSIF_SYS_LOAD_ADDR), SYSIF_SYS_FLASH_ADDR, copylength, tempbuf);
 
 	free(tempbuf);
 }
@@ -109,9 +103,9 @@ void _main(unsigned ramboot)
   unsigned clockspeed = MCU_CLOCK_SPEED;
 
 #ifdef MCU_INPUT_FREQ
-	if (!hwclkctrl.InitCpuClock(MCU_INPUT_FREQ, clockspeed))  // activate the external crystal oscillator with multiplication x2
+	if (!hwclkctrl.InitCpuClock(MCU_INPUT_FREQ, clockspeed))
 #else
-	if (!hwclkctrl.InitCpuClockIntRC(MCU_INTRC_SPEED, clockspeed))  // activate the external crystal oscillator with multiplication x2
+	if (!hwclkctrl.InitCpuClockIntRC(MCU_INTRC_SPEED, clockspeed))
 #endif
 	{
 		while (1)
@@ -137,13 +131,17 @@ void _main(unsigned ramboot)
 
 	pin_led1.Set1();
 
+	traces_init();
+	TRACE("\r\n-------------------------------\r\n");
+	TRACE("Initializing ARMPOFO System...\r\n");
+
 	systimer_init();
 	mcu_enable_interrupts();
 
 	g_display.Init();
 	g_display.cursor_on = false;
 
-	TRACE("ARMPOFO Sys v1.x.x\n");
+	g_display.printf("ARMPOFO Sys v1.x.x\n");
 	g_display.Run();
 
 	g_extflash.Init();

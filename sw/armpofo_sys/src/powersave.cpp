@@ -9,6 +9,7 @@
 #include "powersave.h"
 #include "board_config.h"
 #include "syskeyboard.h"
+#include "sysdisplay.h"
 
 void cpu_soft_reset()
 {
@@ -212,6 +213,16 @@ void enter_low_power()
   	//__NOP();
   }
 	//__WFI();
+}
+
+void enter_powersave()
+{
+	g_display.TurnOnOff(false);
+	pin_led1.Set0();
+
+	// wait until all the keys are released
+
+	enter_low_power();
 }
 
 void standby_wakeup_test()

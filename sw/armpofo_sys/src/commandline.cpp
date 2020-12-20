@@ -11,6 +11,8 @@
 #include "sysproc.h"
 
 #include "battery.h"
+#include "extflash.h"
+#include "traces.h"
 
 TExprCalc  g_calc;
 TCalcValue   calcvar;
@@ -18,21 +20,6 @@ TCalcValue   calcvar;
 TCommandLine::~TCommandLine()
 {
 	// TODO Auto-generated destructor stub
-}
-
-void enter_powersave()
-{
-	g_display.TurnOnOff(false);
-	pin_led1.Set0();
-
-	// wait until all the keys are released
-
-	while (g_keyboard.keys64 != 0)
-	{
-		g_keyboard.Run();
-	}
-
-	enter_low_power();
 }
 
 void TCommandLine::Run()
@@ -156,6 +143,7 @@ void TCommandLine::Run()
 				Clear();
 			}
 		}
+#if 0	 // handled in the system level
 		else if (KEYSYM_RESET == keysym)
 		{
 			cpu_soft_reset();
@@ -164,6 +152,7 @@ void TCommandLine::Run()
 		{
 		  enter_powersave();
 		}
+#endif
 		else if ((editlen < CMDLINE_MAX_LENGTH) && (keysym >= 32) && (keysym <= 127))
 		{
 			if (editpos < editlen)
@@ -296,6 +285,54 @@ void show_battery_status()
 	}
 }
 
+bool TCommandLine::ExecApplication()
+{
+	sp.Init(&editrow[0], editlen);
+	sp.SkipSpaces();
+
+	if (!sp.ReadIdentifier())
+	{
+		return false;
+	}
+
+	// then UC check will be used
+
+	// scan trough all the app slots for the existing application
+	TAppHeader fheader;
+
+	unsigned   faddr = SYSIF_APP_FLASH_START;
+	while (faddr < SYSIF_APP_FLASH_END)
+	{
+		g_extflash.StartReadMem(faddr, &fheader, sizeof(fheader));
+		g_extflash.WaitForComplete();
+		if ( !g_extflash.errorcode
+			   && (fheader.header_checksum == sys_header_checksum(&fheader))
+			 )
+		{
+			if (sp.UCComparePrev((const char *)&fheader.name[0]))
+			{
+				// load the application
+				TRACE("Executing App: %s\r\n", &fheader.name[0]);
+
+				g_extflash.StartReadMem(faddr, (void *)SYSIF_APP_LOAD_ADDR, sizeof(fheader) + fheader.content_length);
+				g_extflash.WaitForComplete();
+
+				//if (g_extflash.errorcode || (fheader.content_checksum != sys_content_checksum((void *)(fheader))
+
+				PEntryFunc pentry = (PEntryFunc)(fheader.entry_point);
+
+				(*pentry)(); // execute
+
+				return true;
+			}
+		}
+
+		faddr += SYSIF_APP_SIZE;
+	}
+
+	return false;
+}
+
 bool TCommandLine::ExecInternalCommand()
 {
 	sp.Init(&editrow[0], editlen);
@@ -334,11 +371,16 @@ bool TCommandLine::ExecInternalCommand()
 	return false;
 }
 
+
 void TCommandLine::Execute()
 {
 	if (ExecInternalCommand())
 	{
 		// print already done there
+	}
+	else if (ExecApplication())
+	{
+
 	}
 	else // try to evaluate as math expression
 	{

@@ -14,6 +14,7 @@ void cpu_soft_reset();
 
 void rtc_start();
 
+void enter_powersave();
 void enter_low_power();
 void standby_wakeup_test();
 
