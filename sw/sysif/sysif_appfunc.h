@@ -4,6 +4,7 @@
 #define SYSIF_APPFUNC_H_
 
 #include "stdint.h"
+#include "sysif_display.h"
 
 #define SYSIF_SYS_LOAD_ADDR   0x24060000
 #define SYSIF_SYS_FLASH_ADDR    0x000000
@@ -47,14 +48,22 @@ uint32_t sys_header_checksum(TAppHeader * aheader);
 typedef void * (* t_sys_getfuncaddr)(const char * idstr);
 AS_EXTERN t_sys_getfuncaddr       psys_getfuncaddr;
 
-AS_EXTERN int     (* psys_get_sys_version)();
+AS_EXTERN int     (* psys_getversion)();
 AS_EXTERN void    (* psys_printf)(const char * fmt, ...);
 AS_EXTERN void    (* psys_trace)(const char * fmt, ...);
 AS_EXTERN void    (* psys_run)();
+AS_EXTERN void    (* psys_reset)();
+
+AS_EXTERN void *  (* psys_keyb_getptr)(const char * name);  // keyboard event structures
+
+AS_EXTERN void    (* psys_disp_getinfo)(TDisplayInfo * rinfo);
 AS_EXTERN void    (* psys_disp_setcursor)(bool aon, int ax, int ay);
+AS_EXTERN void    (* psys_disp_setpos)(int ax, int ay);
+AS_EXTERN void    (* psys_disp_writechar)(char c);
+
 AS_EXTERN void    (* psys_led_set)(unsigned ledid, unsigned value);
 AS_EXTERN void    (* psys_app_save)(TAppHeader * pheader);
-AS_EXTERN void *  (* psys_get_data_ptr)(const char * name);
+
 
 #undef DEFINE_SYSFUNC_VARS
 

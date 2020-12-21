@@ -40,13 +40,19 @@ bool sys_init_application()
 	bok = (bok && setfuncaddr("TRACE",             &psys_trace));
 	bok = (bok && setfuncaddr("PRINTF",            &psys_printf));
 	bok = (bok && setfuncaddr("RUN",               &psys_run));
+	bok = (bok && setfuncaddr("RESET",             &psys_reset));
 	bok = (bok && setfuncaddr("APP_SAVE",          &psys_app_save));
-	bok = (bok && setfuncaddr("GET_DATA_PTR",      &psys_get_data_ptr));
 
 	// less important functions
-	bok = (bok && setfuncaddr("GET_SYS_VERSION",   &psys_get_sys_version));
+	bok = (bok && setfuncaddr("SYS_GETVERSION",    &psys_getversion));
 	bok = (bok && setfuncaddr("LED_SET",           &psys_led_set));
 
+	bok = (bok && setfuncaddr("KEYB_GETPTR",       &psys_keyb_getptr));
+
+	bok = (bok && setfuncaddr("DISP_GETINFO",      &psys_disp_getinfo));
+	bok = (bok && setfuncaddr("DISP_SETPOS",       &psys_disp_setpos));
+	bok = (bok && setfuncaddr("DISP_SETCURSOR",    &psys_disp_setcursor));
+	bok = (bok && setfuncaddr("DISP_WRITECHAR",    &psys_disp_writechar));
 
 	// set SystemCoreClock !!!!
 	SystemCoreClock = MCU_CLOCK_SPEED; // todo: make a system function to get the actual value

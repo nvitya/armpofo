@@ -1,33 +1,53 @@
 // lineedit.cpp
 
 #include "string.h"
-#include "sysdisplay.h"
+#include "sysif.h"
 #include <commandline.h>
+#include "exprcalc.h"
 #include "hwclkctrl.h"
-#include "board_config.h"
-#include "powersave.h"
 #include "clockcnt.h"
-#include "sysproc.h"
-
-#include "appif.h"
-#include "battery.h"
-#include "extflash.h"
 #include "traces.h"
 
-TCommandLine::~TCommandLine()
+TCommandLine  g_commandline;
+
+TExprCalc     g_calc;
+TCalcValue    calcvar;
+
+void TCommandLine::Init()
 {
-	// TODO Auto-generated destructor stub
+	initialized = false;
+
+	if (!psymevents)
+	{
+		psymevents = (TKeySymbolEventBuf *) (* psys_keyb_getptr)("KEYB_SYM_EVENTS");
+		if (!psymevents)
+		{
+			TRACE("Error getting System Keyboard Symbol Events !\r\n");
+			__BKPT();
+		}
+	}
+
+	(* psys_disp_getinfo)(&dispinfo);
+
+	initialized = true;
 }
 
 void TCommandLine::Run()
 {
 	unsigned n;
 
-	g_display.cursor_on = true;
-
-	if (prev_symserial != g_keysym_events.serial)
+	if (!initialized)
 	{
-		TKeySymbolEvent * psyme = &g_keysym_events.events[g_keysym_events.serial & (MAX_KEYSYMEVENTS-1)];
+		Init();
+		if (!initialized)
+		{
+			return;
+		}
+	}
+
+	if (prev_symserial != psymevents->serial)
+	{
+		TKeySymbolEvent * psyme = &psymevents->events[psymevents->serial & (MAX_KEYSYMEVENTS-1)];
 
 		#if 0
 			g_display.SetPos(0, 6);
@@ -130,7 +150,7 @@ void TCommandLine::Run()
 
 				// execute
 				Draw();
-				g_display.WriteChar(10); // new line
+				(* psys_disp_writechar)(10); // new line
 
 				Execute();
 
@@ -171,36 +191,43 @@ void TCommandLine::Run()
 
 		Draw();
 
-		prev_symserial = g_keysym_events.serial;
+		prev_symserial = psymevents->serial;
+	}
+	else
+	{
+		(* psys_disp_getinfo)(&dispinfo);
+		if (!dispinfo.cursor_on)
+		{
+			(* psys_disp_setcursor)(1, dispinfo.cursor_x, dispinfo.cursor_y);
+		}
 	}
 }
 
 void TCommandLine::Draw()
 {
 	// print editrow
+	(* psys_disp_getinfo)(&dispinfo);
 
-	unsigned row = g_display.cposy;
-	if (row >= g_display.rows-1)  row = g_display.rows-1;
+	unsigned row = dispinfo.cposy;
+	if (row >= dispinfo.rows-1)  row = dispinfo.rows-1;
 
-	g_display.SetPos(0, row);
-	g_display.WriteChar('>');
-	for (unsigned n = 0; n < g_display.cols-2; n++)
+	(* psys_disp_setpos)(0, row);
+	(* psys_disp_writechar)('>');
+	for (unsigned n = 0; n < dispinfo.cols-2; n++)
 	{
 		unsigned cpos = startpos + n;
 
 		if (cpos < editlen)
 		{
-			g_display.WriteChar(editrow[cpos]);
+			(* psys_disp_writechar)(editrow[cpos]);
 		}
 		else
 		{
-			g_display.WriteChar(32);
+			(* psys_disp_writechar)(32);
 		}
 	}
 
-	g_display.cursor_on = true;
-	g_display.cursor_x = 1+editpos-startpos;
-	g_display.cursor_y = row;
+	(* psys_disp_setcursor)(1, 1+editpos-startpos, row);
 }
 
 void TCommandLine::Clear()
@@ -226,9 +253,9 @@ void TCommandLine::CorrectStartPos()
 	{
 		startpos = editpos;
 	}
-	else if (editpos - startpos > g_display.cols-2)
+	else if (editpos - startpos > dispinfo.cols-2)
 	{
-		startpos = editpos - (g_display.cols-2);
+		startpos = editpos - (dispinfo.cols-2);
 	}
 }
 
@@ -258,31 +285,7 @@ void TCommandLine::HistLoad(unsigned apos)
 	CorrectStartPos();
 }
 
-void show_battery_status()
-{
-	uint16_t lastkeyserial = g_keysym_events.serial;
-	unsigned st = CLOCKCNT - SystemCoreClock;
-	unsigned t;
-
-	g_display.cursor_on = false;
-
-	while (lastkeyserial == g_keysym_events.serial)
-	{
-		t = CLOCKCNT;
-
-		if (t - st > SystemCoreClock)
-		{
-		  g_display.printf("BAT: %i mV / ", battery_get_u_bat());
-		  g_display.printf("%i mA, ", battery_get_i_charge());
-		  g_display.printf("Supp = %u mV\n", battery_get_u_5V());
-		  st = t;
-		}
-
-		sys_run();
-	}
-}
-
-bool TCommandLine::ExecApplication()
+bool TCommandLine::ExecInternalCommand()
 {
 	sp.Init(&editrow[0], editlen);
 	sp.SkipSpaces();
@@ -292,81 +295,10 @@ bool TCommandLine::ExecApplication()
 		return false;
 	}
 
-	// then UC check will be used
-
-	// scan trough all the app slots for the existing application
-	TAppHeader fheader;
-
-	unsigned   faddr = SYSIF_APP_FLASH_START;
-	while (faddr < SYSIF_APP_FLASH_END)
+	if (sp.UCComparePrev("EXIT"))
 	{
-		g_extflash.StartReadMem(faddr, &fheader, sizeof(fheader));
-		g_extflash.WaitForComplete();
-		if ( !g_extflash.errorcode
-			   && (fheader.header_checksum == sys_header_checksum(&fheader))
-			 )
-		{
-			if (sp.UCComparePrev((const char *)&fheader.name[0]))
-			{
-				// load the application
-				TRACE("Executing App: %s\r\n", &fheader.name[0]);
-
-				g_extflash.StartReadMem(faddr, (void *)SYSIF_APP_LOAD_ADDR, sizeof(fheader) + fheader.content_length);
-				g_extflash.WaitForComplete();
-
-				//if (g_extflash.errorcode || (fheader.content_checksum != sys_content_checksum((void *)(fheader))
-
-				PEntryFunc pentry = (PEntryFunc)(fheader.entry_point);
-
-				(*pentry)(); // execute
-
-				return true;
-			}
-		}
-
-		faddr += SYSIF_APP_SIZE;
-	}
-
-	return false;
-}
-
-bool TCommandLine::ExecInternalCommand()
-{
-	sp.Init(&editrow[0], editlen);
-
-	sp.SkipSpaces();
-
-	if (sp.CheckSymbol("bat"))
-	{
-		show_battery_status();
-		return true;
-	}
-	else if (sp.CheckSymbol("lsapp"))
-	{
-		sys_list_apps();
-		return true;
-	}
-	else if (sp.CheckSymbol("pwm"))
-	{
-		sp.SkipSpaces();
-	  sp.CheckSymbol("(");  // optional
-		sp.SkipSpaces();
-		if (!sp.ReadDecimalNumbers())
-		{
-			g_display.printf(" Actual pwm duty: %i %%", battery_get_charge_percent());
-			return true;
-		}
-
-		int arg = sp.PrevToInt();
-		if ((arg < 0) || (arg > 100))
-		{
-			g_display.printf(" Argument out of range: 0-100");
-			return true;
-		}
-
-		g_display.printf("Setting battery charge to %i %%.", arg);
-		battery_set_charge_percent(arg);
-
+		(* psys_printf)("Exiting...\n");
+		exitcommand = true;
 		return true;
 	}
 
@@ -376,19 +308,23 @@ bool TCommandLine::ExecInternalCommand()
 
 void TCommandLine::Execute()
 {
-	editrow[editlen] = 0; // terminate
+	// zero terminate the line for some c string routines
+	editrow[editlen] = 0;
 
 	if (ExecInternalCommand())
 	{
 		// print already done there
 	}
-	else if (ExecApplication())
+	else // try to evaluate as math expression
 	{
-    // print done
+		if (g_calc.Evaluate(&editrow[0], editlen, &calcvar))
+		{
+			(* psys_printf)("= %0.8f", calcvar.floatvalue);
+		}
+		else
+		{
+			(* psys_printf)("ERR: %s", &g_calc.errormsg[0]);
+		}
 	}
-	else
-	{
-		g_display.printf("Command \"%s\" not found.", &editrow[0]);
-	}
-	g_display.printf("\n>");
+	(* psys_printf)("\n>");
 }

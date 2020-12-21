@@ -21,6 +21,7 @@
 #include "extflash.h"
 #include "sysif.h"
 #include "flasher.h"
+#include "appif.h"
 
 #include "traces.h"
 
@@ -67,6 +68,9 @@ extern unsigned __image_end;
 
 void run_flasher()
 {
+	g_display.printf("Self Flashing...\n");
+	g_display.Run();
+
 	// FLASHER
 	void * tempbuf = malloc(0x1000);  // allocate the temp buffer on the heap !!!
 
@@ -164,7 +168,14 @@ void _main(unsigned ramboot)
 	g_display.printf("Supp = %u mV\n", battery_get_u_5V());
 #endif
 
+	sys_list_apps();
+
 	g_display.Run();
+
+	while (g_keyboard.keys64 != 0)
+	{
+		g_keyboard.Run();
+	}
 
 	unsigned hbclocks = SystemCoreClock / 1;
 
@@ -174,6 +185,7 @@ void _main(unsigned ramboot)
 
 	cmdline.Clear();
 	cmdline.Draw();
+
 
 	// Start with the command line processing
 	while (1)

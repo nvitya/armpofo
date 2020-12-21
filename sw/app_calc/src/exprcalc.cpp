@@ -5,7 +5,7 @@
 #include "exprcalc.h"
 #include "math.h"
 #include "string.h"
-#include "stdio.h"
+#include "mp_printf.h"
 
 void TCalcValue::Assign(TCalcValue * avar)
 {
@@ -178,7 +178,7 @@ bool TExprCalc::ProcessIdentifier(TCalcValue * rresult)  // input in sp.prevptr 
 
 		char idnamestr[CALC_VAR_NAME_LENGTH];
 		strncpy(&idnamestr[0], sp.prevptr, sizeof(idnamestr));
-		sprintf(&errormsg[0], "Unknown identifier \"%s\"", &idnamestr[0]);
+		mp_snprintf(&errormsg[0], sizeof(errormsg), "Unknown identifier \"%s\"", &idnamestr[0]);
 		error = true;
 		return false;
 	}
@@ -245,7 +245,7 @@ bool TExprCalc::CalcNumber(TCalcValue * rresult)
 	}
 	else
 	{
-		sprintf(&errormsg[0], "Invalid char: \"%c\"", c);
+		mp_snprintf(&errormsg[0], sizeof(errormsg), "Invalid char: \"%c\"", c);
 		error = true;
 		return false;
 	}
