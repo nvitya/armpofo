@@ -314,11 +314,21 @@ bool TCommandLine::ExecApplication()
 				g_extflash.StartReadMem(faddr, (void *)SYSIF_APP_LOAD_ADDR, sizeof(fheader) + fheader.content_length);
 				g_extflash.WaitForComplete();
 
-				//if (g_extflash.errorcode || (fheader.content_checksum != sys_content_checksum((void *)(fheader))
+				if (g_extflash.errorcode
+						|| (fheader.content_checksum != sys_content_checksum((void *)(SYSIF_APP_LOAD_ADDR + sizeof(fheader)), fheader.content_length)))
+				{
+					TRACE("Application load error!\r\n");
+					g_display.printf("APP Execute error!\n");
+					return false;
+				}
 
 				PEntryFunc pentry = (PEntryFunc)(fheader.entry_point);
 
+			  asm("push {r4-r12,r14}");
+
 				(*pentry)(); // execute
+
+			  asm("pop  {r4-r12,r14}");
 
 				return true;
 			}

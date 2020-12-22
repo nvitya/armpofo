@@ -34,6 +34,8 @@
 #define MCU_STM32H750VB
 #define MCU_INPUT_FREQ    12000000
 
+#define PRINTF_SUPPORT_FULL
+
 #define MCU_CLOCK_SPEED  100000000  // run only at 100 MHz to spare some energy
 
 #define SYS_APPLICATION          0  // 0 = system

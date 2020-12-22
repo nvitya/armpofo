@@ -161,6 +161,10 @@ void sys_app_save(TAppHeader * pheader) // does not return on success
 
 	// application saved, start it
 
+	// reset the stack
+  asm("ldr  r0, =__stack");
+  asm("mov  sp, r0");
+
 	PEntryFunc pentry = (PEntryFunc)(pheader->entry_point);
 
 	(*pentry)();

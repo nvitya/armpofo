@@ -11,22 +11,13 @@
 #include "sysif.h"
 #include "traces.h"
 
-// Entry point for QSPI Flash boot
-// The IMXRT FlexSPI boot process starts not at the vector table _start but rather here
+extern "C" void _main(unsigned ramboot);
+
+// Entry point for application start
 extern "C" __attribute__((section(".rom_startup"))) void _startrom(void)
 {
-  mcu_disable_interrupts();
-
-	// the stack might not be set properly so set it
-  asm("ldr  r0, =__stack");
-  asm("mov  sp, r0");
-
-  // start main
-  asm("ldr  r1, =_main");
-  asm("movs r0, #0"); // signalize ROM boot
-  asm("blx  r1");
-
-  __BKPT();
+  // leave the system stack !
+	_main(0);
 }
 
 // Entry point for Development
@@ -45,7 +36,7 @@ extern "C" __attribute__((section(".startup"))) void _start(void)
   asm("movs r0, #1");  // signalize Development (RAM) boot
   asm("blx  r1");
 
-  __BKPT();
+  __BKPT(); // should never return !
 }
 
 
@@ -74,7 +65,7 @@ void run_flasher()
 	(* psys_app_save)((TAppHeader *)&application_header); // never returns.
 }
 
-extern "C" __attribute__((section(".startup"),used,noreturn))
+extern "C" __attribute__((section(".startup"),used))
 void _main(unsigned ramboot)
 {
 	cppinit();
@@ -120,7 +111,7 @@ void _main(unsigned ramboot)
 		}
 	}
 
-	(* psys_reset)();
+	//(* psys_reset)();
 }
 
 // ----------------------------------------------------------------------------

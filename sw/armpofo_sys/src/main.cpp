@@ -27,8 +27,7 @@
 
 TCommandLine  cmdline;
 
-// Entry point for QSPI Flash boot
-// The IMXRT FlexSPI boot process starts not at the vector table _start but rather here
+// Entry point for QSPI boot
 extern "C" __attribute__((section(".rom_startup"))) void _startrom(void)
 {
   mcu_disable_interrupts();
