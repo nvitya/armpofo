@@ -19,23 +19,16 @@
  * 3. This notice may not be removed or altered from any source distribution.
  * --------------------------------------------------------------------------- */
 /*
- *  file:     board/armpofo/board.h
- *  brief:    Board specific settings for the project
+ *  file:     qspiflashtest.h
+ *  brief:    Testing routines for a QSPI Flash memory
  *  version:  1.00
- *  date:     2020-12-04
+ *  date:     2018-02-10
  *  authors:  nvitya
 */
 
-#ifndef BOARD_H_
-#define BOARD_H_
+#ifndef SRC_QSPIFLASHTEST_H_
+#define SRC_QSPIFLASHTEST_H_
 
-#define BOARD_ARMPOFO
-#define BOARD_NAME "ARMPOFO (Atari Portfolio Upgrade)"
-#define MCU_STM32H750VB
-#define MCU_INPUT_FREQ    12000000
+void qspi_flash_test();
 
-#define MCU_CLOCK_SPEED  100000000  // run only at 100 MHz to spare energy
-
-#define PRINTF_SUPPORT_FULL
-
-#endif /* BOARD_H_ */
+#endif /* SRC_QSPIFLASHTEST_H_ */

@@ -36,6 +36,5 @@
 
 #define MCU_CLOCK_SPEED  100000000  // run only at 100 MHz to spare energy
 
-#define PRINTF_SUPPORT_FULL
 
 #endif /* BOARD_H_ */

@@ -19,7 +19,7 @@
 #include "battery.h"
 #include "sysproc.h"
 #include "extflash.h"
-#include "apsysif.h"
+#include "sysif.h"
 #include "traces.h"
 
 TCommandLine  cmdline;
@@ -39,7 +39,7 @@ void load_and_start_sys()
 		return;
 	}
 
-	g_extflash.StartReadMem(APSYS_SYS_FLASH_ADDR, (void *)APSYS_SYS_LOAD_ADDR, sizeof(TAppHeader));
+	g_extflash.StartReadMem(SYSIF_SYS_FLASH_ADDR, (void *)SYSIF_SYS_LOAD_ADDR, sizeof(TAppHeader));
 	g_extflash.WaitForComplete();
 	if (g_extflash.errorcode)
 	{
@@ -47,7 +47,7 @@ void load_and_start_sys()
 		return;
 	}
 
-	TAppHeader * pheader = (TAppHeader *)APSYS_SYS_LOAD_ADDR;
+	TAppHeader * pheader = (TAppHeader *)SYSIF_SYS_LOAD_ADDR;
 
 	// check the header
 	if (strncmp(&pheader->name[0], "ARMPOFO_SYS", sizeof(pheader->name)) != 0)
@@ -56,7 +56,7 @@ void load_and_start_sys()
 		return;
 	}
 
-	if (apsys_header_checksum(pheader) != pheader->header_checksum)
+	if (sys_header_checksum(pheader) != pheader->header_checksum)
 	{
 		TRACE("SYS header checksum error.\r\n");
 		return;
@@ -64,8 +64,8 @@ void load_and_start_sys()
 
 	TRACE("Loading content...\r\n");
 	g_extflash.StartReadMem(
-			APSYS_SYS_FLASH_ADDR + sizeof(TAppHeader),
-			(void *)(APSYS_SYS_LOAD_ADDR + sizeof(TAppHeader)),
+			SYSIF_SYS_FLASH_ADDR + sizeof(TAppHeader),
+			(void *)(SYSIF_SYS_LOAD_ADDR + sizeof(TAppHeader)),
 			pheader->content_length
 	);
 	g_extflash.WaitForComplete();
@@ -75,7 +75,7 @@ void load_and_start_sys()
 		return;
 	}
 
-	unsigned csum = apsys_content_checksum((void *)(APSYS_SYS_LOAD_ADDR + sizeof(TAppHeader)), pheader->content_length);
+	unsigned csum = sys_content_checksum((void *)(SYSIF_SYS_LOAD_ADDR + sizeof(TAppHeader)), pheader->content_length);
 	if (csum != pheader->content_checksum)
 	{
 		TRACE("SYS content checksum error.\r\n");

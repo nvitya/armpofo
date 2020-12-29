@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>armpofo_bl</name>
+	<name>qspi2</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -29,11 +29,6 @@
 			<name>nvcm</name>
 			<type>2</type>
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/nvcm</locationURI>
-		</link>
-		<link>
-			<name>sysif</name>
-			<type>2</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/sysif</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>

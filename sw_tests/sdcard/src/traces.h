@@ -19,23 +19,33 @@
  * 3. This notice may not be removed or altered from any source distribution.
  * --------------------------------------------------------------------------- */
 /*
- *  file:     board/armpofo/board.h
- *  brief:    Board specific settings for the project
+ *  file:     traces.h (uart)
+ *  brief:    Dummy traces
  *  version:  1.00
- *  date:     2020-12-04
+ *  date:     2018-02-10
  *  authors:  nvitya
 */
 
-#ifndef BOARD_H_
-#define BOARD_H_
+#ifndef __Traces__h
+#define __Traces__h
 
-#define BOARD_ARMPOFO
-#define BOARD_NAME "ARMPOFO (Atari Portfolio Upgrade)"
-#define MCU_STM32H750VB
-#define MCU_INPUT_FREQ    12000000
+#include "hwuart.h"
 
-#define MCU_CLOCK_SPEED  100000000  // run only at 100 MHz to spare energy
+extern THwUart trace_uart;
 
-#define PRINTF_SUPPORT_FULL
+// ignore traces
+#define TRACE(...)  { trace_uart.printf( __VA_ARGS__ ); }
 
-#endif /* BOARD_H_ */
+#ifdef LTRACES
+ #define LTRACE(...)  TRACE( __VA_ARGS__ )
+#else
+ #define LTRACE(...)
+#endif
+
+#undef LTRACES
+
+void traces_init();
+
+#endif //!defined(Traces__h)
+
+//--- End Of file --------------------------------------------------------------
